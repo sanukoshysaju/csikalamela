@@ -1,0 +1,216 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSI Elanthoor District Youth Kalamela</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="header">
+    <div class="brand">
+      <div class="brand-mark">CSI</div>
+      <div>
+        <h1>CSI Elanthoor District</h1>
+        <p>Youth Kalamela</p>
+      </div>
+    </div>
+    <nav>
+      <button class="nav-btn active" onclick="showPage('home', this)">Home</button>
+      <button class="nav-btn" onclick="showPage('scoreboard', this)">Scoreboard</button>
+      <button class="nav-btn" onclick="showPage('leaderboard', this)">Leaderboard</button>
+      <button class="nav-btn" onclick="showPage('admin', this)">Admin Panel</button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="home" class="page">
+      <div class="hero">
+        <p class="eyebrow">TALENT • UNITY • YOUTH</p>
+        <h2>CSI Elanthoor District<br><span>Youth Kalamela</span></h2>
+        <p class="hero-text">
+          The CSI Elanthoor District Youth Kalamela celebrates the creativity,
+          talents and dedication of young people. Through cultural competitions,
+          our youth share their abilities, encourage one another and strengthen
+          the spirit of unity. Let every performance inspire and every talent shine.
+        </p>
+        <div class="hero-actions">
+          <button onclick="showPage('scoreboard')">View Scoreboard</button>
+          <button class="secondary-btn" onclick="showPage('leaderboard')">View Leaderboard</button>
+        </div>
+      </div>
+      <div class="home-cards">
+        <article class="info-card">
+          <h3>Unit Leaderboard</h3>
+          <p>Check unit positions and total points.</p>
+          <button class="text-btn" onclick="showPage('leaderboard')">View rankings →</button>
+        </article>
+        <article class="info-card">
+          <h3>Individual Scores</h3>
+          <p>See participants and their event points.</p>
+          <button class="text-btn" onclick="showPage('scoreboard')">View scores →</button>
+        </article>
+        <article class="info-card">
+          <h3>Special Awards</h3>
+          <p>Find the Kala Thilakam and Kala Prathibha.</p>
+          <button class="text-btn" onclick="showPage('leaderboard')">View award winners →</button>
+        </article>
+      </div>
+    </section>
+
+    <section id="scoreboard" class="page hidden">
+      <div class="section-heading">
+        <p class="eyebrow">COMPETITION RESULTS</p>
+        <h2>Unit Scoreboard</h2>
+        <p>Choose a unit to view participant scores and event results.</p>
+      </div>
+      <div class="panel">
+        <label for="scoreUnitSelect">Select Church Unit</label>
+        <select id="scoreUnitSelect" onchange="renderScoreboard()">
+          <option value="">Select a unit</option>
+        </select>
+        <div class="total-card">
+          <span id="selectedUnitName">Select a church unit</span>
+          <div><strong id="selectedUnitScore">0</strong><small> Total Points</small></div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Participant</th><th>Gender</th><th>Event</th><th>Points</th></tr>
+            </thead>
+            <tbody id="participantScoreRows">
+              <tr><td colspan="4">Select a unit to view scores.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="leaderboard" class="page hidden">
+      <div class="section-heading">
+        <p class="eyebrow">CURRENT STANDINGS</p>
+        <h2>Leaderboard</h2>
+        <p>Unit positions are calculated automatically from recorded points.</p>
+      </div>
+      <div class="panel">
+        <h3>Church Unit Rankings</h3>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Position</th><th>Unit Name</th><th>Total Points</th></tr>
+            </thead>
+            <tbody id="leaderboardRows">
+              <tr><td colspan="3">No units added yet.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="award-grid">
+        <article class="award-card girl-award">
+          <div class="award-symbol">👑</div>
+          <p class="eyebrow">GIRLS CATEGORY</p>
+          <h3>Kala Thilakam</h3>
+          <p id="kalaThilakamName" class="winner-name">Not decided yet</p>
+          <p id="kalaThilakamDetails" class="winner-details">Points: 0</p>
+        </article>
+        <article class="award-card boy-award">
+          <div class="award-symbol">🏅</div>
+          <p class="eyebrow">BOYS CATEGORY</p>
+          <h3>Kala Prathibha</h3>
+          <p id="kalaPrathibhaName" class="winner-name">Not decided yet</p>
+          <p id="kalaPrathibhaDetails" class="winner-details">Points: 0</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="admin" class="page hidden">
+      <div class="section-heading">
+        <p class="eyebrow">MANAGEMENT</p>
+        <h2>Admin Panel</h2>
+        <p>Manage units, participants and event results.</p>
+      </div>
+
+      <div id="adminLogin" class="panel login-panel">
+        <h3>Admin Login</h3>
+        <label for="adminPassword">Password</label>
+        <input id="adminPassword" type="password" placeholder="Enter admin password">
+        <button onclick="loginAdmin()">Login</button>
+        <p id="loginMessage" class="message"></p>
+      </div>
+
+      <div id="adminWorkspace" class="hidden">
+        <div class="admin-topbar">
+          <span>Admin access enabled</span>
+          <button class="danger-btn" onclick="logoutAdmin()">Logout</button>
+        </div>
+
+        <div class="panel">
+          <h3>1. Manage Church Units</h3>
+          <p class="help-text">Add each church unit. You can edit or delete a unit below.</p>
+          <form onsubmit="addUnit(event)" class="form-row">
+            <input id="newUnitName" type="text" placeholder="Type church unit name" required>
+            <button type="submit">Add Unit</button>
+          </form>
+          <p id="unitMessage" class="message"></p>
+          <div id="unitNameList"></div>
+        </div>
+
+        <div class="panel">
+          <h3>2. Add Participants</h3>
+          <form onsubmit="addParticipant(event)">
+            <label for="participantUnit">Select Church Unit</label>
+            <select id="participantUnit" required></select>
+            <label for="participantName">Participant Name</label>
+            <input id="participantName" type="text" placeholder="Enter participant name" required>
+            <label for="participantGender">Gender</label>
+            <select id="participantGender" required>
+              <option value="">Select gender</option>
+              <option value="Boy">Boy</option>
+              <option value="Girl">Girl</option>
+            </select>
+            <button type="submit">Add Participant</button>
+          </form>
+          <p id="participantMessage" class="message"></p>
+          <div id="participantList"></div>
+        </div>
+
+        <div class="panel">
+          <h3>3. Add Event Points</h3>
+          <form onsubmit="addResult(event)">
+            <label for="resultUnit">Select Church Unit</label>
+            <select id="resultUnit" onchange="updateParticipantOptions()" required></select>
+            <label for="resultParticipant">Select Participant</label>
+            <select id="resultParticipant" required></select>
+            <label for="eventName">Event Name</label>
+            <input id="eventName" type="text" placeholder="e.g. Solo Song" required>
+            <label for="eventPoints">Points</label>
+            <input id="eventPoints" type="number" min="0" step="0.5" placeholder="Enter points" required>
+            <button type="submit">Save Event Points</button>
+          </form>
+          <p id="resultMessage" class="message"></p>
+        </div>
+
+        <div class="panel">
+          <h3>4. Edit or Delete Results</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Unit</th><th>Participant</th><th>Event</th><th>Points</th><th>Actions</th></tr>
+              </thead>
+              <tbody id="resultRows"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <strong>CSI Elanthoor District Youth Kalamela</strong>
+    <p>Celebrating Talent and Unity.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
