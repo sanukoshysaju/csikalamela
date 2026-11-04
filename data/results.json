@@ -1,5 +1,37 @@
 {
   "schemaVersion": 3,
-  "updatedAt": null,
-  "results": {}
+  "updatedAt": "2026-11-04T16:53:00.400Z",
+  "results": {
+    "e07": {
+      "1": {
+        "pastorateId": "p01",
+        "winner": "sanu",
+        "points": 10
+      },
+      "2": {
+        "pastorateId": "p02",
+        "winner": "jijo",
+        "points": 5
+      },
+      "3": {
+        "pastorateId": "p03",
+        "winner": "shijo",
+        "points": 3
+      }
+    },
+    "e24": {
+      "1": {
+        "pastorateId": "p01",
+        "points": 10
+      },
+      "2": {
+        "pastorateId": "p02",
+        "points": 5
+      },
+      "3": {
+        "pastorateId": "p03",
+        "points": 3
+      }
+    }
+  }
 }
