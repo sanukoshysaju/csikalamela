@@ -1,216 +1,186 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CSI Elanthoor District Youth Kalamela</title>
+  <meta name="theme-color" content="#071d36">
+  <meta name="description" content="CSI Elanthoor District Youth Kalamela — competition results, pastorate standings and awards.">
+  <meta property="og:title" content="CSI Elanthoor District Youth Kalamela">
+  <meta property="og:description" content="Celebrating talent, faith and fellowship. Explore the scoreboard and pastorate standings.">
+  <title>CSI Elanthoor District Youth Kalamela | Results &amp; Standings</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
 <body>
   <header class="header">
-    <div class="brand">
-      <div class="brand-mark">CSI</div>
-      <div>
-        <h1>CSI Elanthoor District</h1>
-        <p>Youth Kalamela</p>
+    <div class="header-inner">
+      <div class="brand" aria-label="CSI Elanthoor District Youth Kalamela">
+        <div class="brand-mark" title="CSI Madhya Kerala Diocesan Youth Movement image">
+          <span class="brand-fallback" aria-hidden="true">CSI</span>
+          <img class="brand-logo" src="https://r2-pub.csimadhyakeraladiocese.org/optm/images/08f95268-a5d0-45b2-9538-f800d6d48b3f.jpg" alt="CSI Madhya Kerala Diocesan Youth Movement" onload="this.previousElementSibling.style.display='none'" onerror="this.style.display='none'">
+        </div>
+        <div class="brand-copy">
+          <span class="brand-upper">CSI MADHYA KERALA DIOCESE</span>
+          <h1>Elanthoor District</h1>
+          <span class="brand-sub">YOUTH KALAMELA</span>
+        </div>
       </div>
+      <nav aria-label="Main navigation">
+        <button type="button" class="nav-btn active" data-page="home">Home</button>
+        <button type="button" class="nav-btn" data-page="scoreboard">Scoreboard</button>
+        <button type="button" class="nav-btn" data-page="leaderboard">Leaderboard</button>
+        <button type="button" class="nav-btn" data-page="admin">Admin</button>
+      </nav>
     </div>
-    <nav>
-      <button class="nav-btn active" onclick="showPage('home', this)">Home</button>
-      <button class="nav-btn" onclick="showPage('scoreboard', this)">Scoreboard</button>
-      <button class="nav-btn" onclick="showPage('leaderboard', this)">Leaderboard</button>
-      <button class="nav-btn" onclick="showPage('admin', this)">Admin Panel</button>
-    </nav>
   </header>
 
   <main>
+    <div id="statusBar" class="status-bar" role="status" aria-live="polite">Loading published results...</div>
+
     <section id="home" class="page">
       <div class="hero">
-        <p class="eyebrow">TALENT • UNITY • YOUTH</p>
-        <h2>CSI Elanthoor District<br><span>Youth Kalamela</span></h2>
-        <p class="hero-text">
-          The CSI Elanthoor District Youth Kalamela celebrates the creativity,
-          talents and dedication of young people. Through cultural competitions,
-          our youth share their abilities, encourage one another and strengthen
-          the spirit of unity. Let every performance inspire and every talent shine.
-        </p>
-        <div class="hero-actions">
-          <button onclick="showPage('scoreboard')">View Scoreboard</button>
-          <button class="secondary-btn" onclick="showPage('leaderboard')">View Leaderboard</button>
+        <div class="hero-copy">
+          <div class="hero-pill"><span class="pulse-dot"></span> THE SPIRIT OF YOUTH · THE JOY OF ART</div>
+          <h2>Where talent<br><em>finds its stage.</em></h2>
+          <p class="hero-text">CSI Elanthoor District Youth Kalamela brings our pastorates together to celebrate creativity, fellowship and the gifts of young people.</p>
+          <div class="hero-actions">
+            <button type="button" data-page="scoreboard">Explore results <span aria-hidden="true">↗</span></button>
+            <button type="button" class="secondary-btn" data-page="leaderboard">View standings <span aria-hidden="true">→</span></button>
+          </div>
+          <div class="hero-meta"><span><span class="meta-symbol">✦</span> 21 pastorates</span><span><span class="meta-symbol">✦</span> Culture &amp; creativity</span><span><span class="meta-symbol">✦</span> One community</span></div>
+        </div>
+        <div class="hero-art" aria-label="Youth Movement artwork">
+          <div class="hero-art-grid"></div>
+          <div class="hero-medallion">
+            <div class="hero-medallion-inner">
+              <div class="medallion-fallback"><span>CSI</span><small>YOUTH MOVEMENT</small></div>
+              <img src="https://r2-pub.csimadhyakeraladiocese.org/optm/images/08f95268-a5d0-45b2-9538-f800d6d48b3f.jpg" alt="Youth Movement illustration published on the CSI Madhya Kerala Diocese website" onload="this.previousElementSibling.style.display='none'" onerror="this.style.display='none'">
+            </div>
+          </div>
+          <div class="hero-art-note"><span class="note-star">✳</span><span>Faith · Fellowship<br><strong>Creative expression</strong></span></div>
         </div>
       </div>
-      <div class="home-cards">
-        <article class="info-card">
-          <h3>Unit Leaderboard</h3>
-          <p>Check unit positions and total points.</p>
-          <button class="text-btn" onclick="showPage('leaderboard')">View rankings →</button>
-        </article>
-        <article class="info-card">
-          <h3>Individual Scores</h3>
-          <p>See participants and their event points.</p>
-          <button class="text-btn" onclick="showPage('scoreboard')">View scores →</button>
-        </article>
-        <article class="info-card">
-          <h3>Special Awards</h3>
-          <p>Find the Kala Thilakam and Kala Prathibha.</p>
-          <button class="text-btn" onclick="showPage('leaderboard')">View award winners →</button>
-        </article>
+
+      <div class="stat-strip" aria-label="Competition overview">
+        <div class="stat"><span class="stat-icon">♧</span><div><strong id="homePastorates">21</strong><span>Participating pastorates</span></div></div>
+        <div class="stat"><span class="stat-icon">◈</span><div><strong id="homeEvents">34</strong><span>Competition events</span></div></div>
+        <div class="stat"><span class="stat-icon">✦</span><div><strong id="homeCompleted">0</strong><span>Events with results</span></div></div>
+        <div class="stat"><span class="stat-icon">◆</span><div><strong id="homePlaces">0</strong><span>Placements published</span></div></div>
       </div>
+
+      <div class="content-heading"><div><p class="eyebrow">FOLLOW THE CELEBRATION</p><h2>Find every moment of achievement.</h2></div></div>
+      <div class="home-cards">
+        <article class="info-card"><div class="card-icon ink"><span aria-hidden="true">▤</span></div><span class="card-index">01 / RESULTS</span><h3>Pastorate scoreboard</h3><p>Choose a church, see its winning entries and browse the points earned across competitions.</p><button type="button" class="text-btn" data-page="scoreboard">Explore scoreboard <span aria-hidden="true">↗</span></button></article>
+        <article class="info-card"><div class="card-icon amber"><span aria-hidden="true">♛</span></div><span class="card-index">02 / STANDINGS</span><h3>Overall leaderboard</h3><p>Follow pastorate rankings as the results of individual and group events are published.</p><button type="button" class="text-btn" data-page="leaderboard">View leaderboard <span aria-hidden="true">↗</span></button></article>
+        <article class="info-card"><div class="card-icon coral"><span aria-hidden="true">✳</span></div><span class="card-index">03 / EXCELLENCE</span><h3>Special distinctions</h3><p>Discover provisional Kala Thilakam and Kala Prathibha standings from eligible events.</p><button type="button" class="text-btn" data-page="leaderboard">Explore awards <span aria-hidden="true">↗</span></button></article>
+      </div>
+
+      <section class="movement-story" aria-labelledby="storyHeading">
+        <div class="story-accent" aria-hidden="true"><span>✢</span><span>1916</span></div>
+        <div class="story-body"><p class="eyebrow">OUR ROOTS</p><h2 id="storyHeading">A movement shaped by service and fellowship.</h2><p>CSI Madhya Kerala Diocesan Youth Movement traces its early annual youth gatherings to 1916. Known earlier as the Youth League, it adopted the name Youth Movement in 1978. That heritage of youth participation and service is the inspiration behind this celebration of talent.</p><a href="https://csimadhyakeraladiocese.org/organisations/youth-movement/" target="_blank" rel="noopener noreferrer">Learn about the Youth Movement <span aria-hidden="true">↗</span></a></div>
+      </section>
     </section>
 
     <section id="scoreboard" class="page hidden">
-      <div class="section-heading">
-        <p class="eyebrow">COMPETITION RESULTS</p>
-        <h2>Unit Scoreboard</h2>
-        <p>Choose a unit to view participant scores and event results.</p>
+      <div class="page-banner"><div><p class="eyebrow">YOUR CHURCH · YOUR RESULTS</p><h2>Pastorate Scoreboard</h2><p>Every performance matters. Discover who placed, where, and how many points were earned.</p></div><span class="page-banner-glyph" aria-hidden="true">✦</span></div>
+      <div class="panel spotlight-panel">
+        <div class="panel-head"><div><p class="eyebrow">PASTORATE VIEW</p><h3>Find your church</h3></div><div class="micro-label">21 PASTORATES</div></div>
+        <label for="scorePastorate">Select Pastorate</label>
+        <select id="scorePastorate"><option value="">Choose pastorate</option></select>
+        <div class="total-card"><div><small>CHURCH TOTAL</small><span id="selectedPastorateName">Select a pastorate</span></div><div class="score-figure"><strong id="selectedPastoratePoints">0</strong><small>PTS</small></div></div>
+        <div class="table-title-row"><h4>Winning entries</h4><span class="table-hint">Individual &amp; group events</span></div>
+        <div class="table-wrap"><table><thead><tr><th>Event</th><th>Place</th><th>Participant / Entry</th><th>Points</th></tr></thead><tbody id="pastorateResultsRows"><tr><td colspan="4">Select a pastorate.</td></tr></tbody></table></div>
       </div>
-      <div class="panel">
-        <label for="scoreUnitSelect">Select Church Unit</label>
-        <select id="scoreUnitSelect" onchange="renderScoreboard()">
-          <option value="">Select a unit</option>
-        </select>
-        <div class="total-card">
-          <span id="selectedUnitName">Select a church unit</span>
-          <div><strong id="selectedUnitScore">0</strong><small> Total Points</small></div>
-        </div>
-        <div class="table-wrap">
-          <table>
-            <thead>
-              <tr><th>Participant</th><th>Gender</th><th>Event</th><th>Points</th></tr>
-            </thead>
-            <tbody id="participantScoreRows">
-              <tr><td colspan="4">Select a unit to view scores.</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
+      <details class="panel matrix-panel" id="matrixDetails">
+        <summary><div><p class="eyebrow">DETAILED BREAKDOWN</p><h3>All-Pastorate Results Matrix</h3><p>21 pastorates × 34 events, with point totals in each row.</p></div><span class="details-toggle">View matrix <span aria-hidden="true">⌄</span></span></summary>
+        <div class="matrix-controls"><span>Scroll sideways to explore all events.</span><button type="button" class="secondary-btn dark-outline" id="downloadMatrix">Export CSV ↗</button></div>
+        <div class="table-wrap matrix-scroll"><table id="matrixTable" class="matrix-table"><thead></thead><tbody></tbody></table></div>
+      </details>
     </section>
 
     <section id="leaderboard" class="page hidden">
-      <div class="section-heading">
-        <p class="eyebrow">CURRENT STANDINGS</p>
-        <h2>Leaderboard</h2>
-        <p>Unit positions are calculated automatically from recorded points.</p>
-      </div>
-      <div class="panel">
-        <h3>Church Unit Rankings</h3>
-        <div class="table-wrap">
-          <table>
-            <thead>
-              <tr><th>Position</th><th>Unit Name</th><th>Total Points</th></tr>
-            </thead>
-            <tbody id="leaderboardRows">
-              <tr><td colspan="3">No units added yet.</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-      <div class="award-grid">
-        <article class="award-card girl-award">
-          <div class="award-symbol">👑</div>
-          <p class="eyebrow">GIRLS CATEGORY</p>
-          <h3>Kala Thilakam</h3>
-          <p id="kalaThilakamName" class="winner-name">Not decided yet</p>
-          <p id="kalaThilakamDetails" class="winner-details">Points: 0</p>
-        </article>
-        <article class="award-card boy-award">
-          <div class="award-symbol">🏅</div>
-          <p class="eyebrow">BOYS CATEGORY</p>
-          <h3>Kala Prathibha</h3>
-          <p id="kalaPrathibhaName" class="winner-name">Not decided yet</p>
-          <p id="kalaPrathibhaDetails" class="winner-details">Points: 0</p>
-        </article>
-      </div>
+      <div class="page-banner"><div><p class="eyebrow">CELEBRATING EXCELLENCE</p><h2>Leaderboard</h2><p>Pastorates rise through shared effort. Standings update whenever new results are published.</p></div><span class="page-banner-glyph" aria-hidden="true">♛</span></div>
+      <div class="leaders-intro"><div><p class="eyebrow">AT THE TOP</p><h3>Leading pastorates</h3></div><p>Based on total points earned</p></div>
+      <div id="topPodium" class="top-podium" aria-label="Top three pastorates"><div class="empty-podium">Results have not been published yet.</div></div>
+      <div class="panel standings-panel"><div class="panel-head"><div><p class="eyebrow">THE FULL PICTURE</p><h3>Overall standings</h3></div><span class="micro-label">ALL PASTORATES</span></div><div class="table-wrap"><table class="leaderboard-table"><thead><tr><th>Rank</th><th>Pastorate</th><th>Points</th></tr></thead><tbody id="leaderboardRows"></tbody></table></div></div>
+      <div class="leaders-intro awards-heading"><div><p class="eyebrow">YOUTH EXCELLENCE</p><h3>Individual recognitions</h3></div></div>
+      <div class="award-grid"><article class="award-card girl-award"><span class="award-kicker">DISTINCTION · GIRLS</span><div class="award-symbol" aria-hidden="true">✿</div><h3>Kala Thilakam</h3><p id="kalaThilakamName" class="winner-name">Not decided yet</p><p id="kalaThilakamDetails" class="winner-details">Eligible individual event points</p></article><article class="award-card boy-award"><span class="award-kicker">DISTINCTION · BOYS</span><div class="award-symbol" aria-hidden="true">✦</div><h3>Kala Prathibha</h3><p id="kalaPrathibhaName" class="winner-name">Not decided yet</p><p id="kalaPrathibhaDetails" class="winner-details">Eligible individual event points</p></article></div>
+      <p class="award-disclaimer">Award standings are provisional: group points are excluded, and only explicitly gender-categorised individual events are counted. Official eligibility rules must be confirmed.</p>
     </section>
 
     <section id="admin" class="page hidden">
       <div class="section-heading">
-        <p class="eyebrow">MANAGEMENT</p>
+        <p class="eyebrow">LOCAL RESULT ENTRY</p>
         <h2>Admin Panel</h2>
-        <p>Manage units, participants and event results.</p>
+        <p>Select a fixed competition, enter podium winners and export the published JSON file.</p>
       </div>
-
-      <div id="adminLogin" class="panel login-panel">
-        <h3>Admin Login</h3>
-        <label for="adminPassword">Password</label>
-        <input id="adminPassword" type="password" placeholder="Enter admin password">
-        <button onclick="loginAdmin()">Login</button>
-        <p id="loginMessage" class="message"></p>
+      <div id="adminPublicNotice" class="panel hidden">
+        <h3>Read-only public website</h3>
+        <p>Results are edited on the organiser's laptop using Live Server on <code>localhost</code>. Only the exported JSON is published through GitHub Pages.</p>
       </div>
-
+      <div id="adminLogin" class="panel login-panel hidden">
+        <h3>Local Editor Login</h3>
+        <p class="help-text">This PIN prevents accidental edits locally. It is <strong>not</strong> secure internet authentication; GitHub write access controls publishing.</p>
+        <label for="adminPassword">Local demo PIN</label>
+        <input id="adminPassword" type="password" autocomplete="off" placeholder="Enter local PIN">
+        <button type="button" id="loginButton">Unlock editor</button>
+        <p id="loginMessage" class="message" role="status"></p>
+      </div>
       <div id="adminWorkspace" class="hidden">
         <div class="admin-topbar">
-          <span>Admin access enabled</span>
-          <button class="danger-btn" onclick="logoutAdmin()">Logout</button>
+          <span>Local editor • Draft saved in this browser</span>
+          <button type="button" id="logoutButton" class="danger-btn">Lock editor</button>
         </div>
-
         <div class="panel">
-          <h3>1. Manage Church Units</h3>
-          <p class="help-text">Add each church unit. You can edit or delete a unit below.</p>
-          <form onsubmit="addUnit(event)" class="form-row">
-            <input id="newUnitName" type="text" placeholder="Type church unit name" required>
-            <button type="submit">Add Unit</button>
+          <h3>1. Pastorates (fixed master list)</h3>
+          <p class="help-text">The 21 pastorates were loaded from your supplied church list. No need to type them again.</p>
+          <div id="pastorateList" class="pastorate-grid"></div>
+        </div>
+        <div class="panel">
+          <h3>2. Competition Events (fixed master list)</h3>
+          <p class="help-text">Events and their Individual / Group types are defined in <code>script.js</code>. The Admin Panel cannot add, edit or remove them.</p>
+          <div class="table-wrap"><table>
+            <thead><tr><th>Category</th><th>Competition</th><th>Type</th></tr></thead>
+            <tbody id="eventRows"></tbody>
+          </table></div>
+        </div>
+        <div class="panel">
+          <h3>3. Record 1st / 2nd / 3rd Place Winners</h3>
+          <label for="resultEvent">Select an Event</label>
+          <select id="resultEvent"><option value="">Choose event</option></select>
+          <p id="resultEventHelp" class="help-text">Select an event first.</p>
+          <form id="resultForm">
+            <div id="podiumRows"></div>
+            <div class="form-actions">
+              <button type="submit">Save / Update Event Results</button>
+              <button type="button" id="clearEventResults" class="danger-btn">Clear This Event's Results</button>
+            </div>
           </form>
-          <p id="unitMessage" class="message"></p>
-          <div id="unitNameList"></div>
+          <p id="resultMessage" class="message" role="status"></p>
         </div>
-
         <div class="panel">
-          <h3>2. Add Participants</h3>
-          <form onsubmit="addParticipant(event)">
-            <label for="participantUnit">Select Church Unit</label>
-            <select id="participantUnit" required></select>
-            <label for="participantName">Participant Name</label>
-            <input id="participantName" type="text" placeholder="Enter participant name" required>
-            <label for="participantGender">Gender</label>
-            <select id="participantGender" required>
-              <option value="">Select gender</option>
-              <option value="Boy">Boy</option>
-              <option value="Girl">Girl</option>
-            </select>
-            <button type="submit">Add Participant</button>
-          </form>
-          <p id="participantMessage" class="message"></p>
-          <div id="participantList"></div>
+          <h3>4. Recorded Event Results</h3>
+          <p class="help-text">Click Edit to load an event’s existing winners, or Clear to remove its results. The competition list itself cannot be changed here.</p>
+          <div class="table-wrap"><table>
+            <thead><tr><th>Competition</th><th>Type</th><th>Recorded positions</th><th>Actions</th></tr></thead>
+            <tbody id="recordedEventRows"></tbody>
+          </table></div>
         </div>
-
-        <div class="panel">
-          <h3>3. Add Event Points</h3>
-          <form onsubmit="addResult(event)">
-            <label for="resultUnit">Select Church Unit</label>
-            <select id="resultUnit" onchange="updateParticipantOptions()" required></select>
-            <label for="resultParticipant">Select Participant</label>
-            <select id="resultParticipant" required></select>
-            <label for="eventName">Event Name</label>
-            <input id="eventName" type="text" placeholder="e.g. Solo Song" required>
-            <label for="eventPoints">Points</label>
-            <input id="eventPoints" type="number" min="0" step="0.5" placeholder="Enter points" required>
-            <button type="submit">Save Event Points</button>
-          </form>
-          <p id="resultMessage" class="message"></p>
-        </div>
-
-        <div class="panel">
-          <h3>4. Edit or Delete Results</h3>
-          <div class="table-wrap">
-            <table>
-              <thead>
-                <tr><th>Unit</th><th>Participant</th><th>Event</th><th>Points</th><th>Actions</th></tr>
-              </thead>
-              <tbody id="resultRows"></tbody>
-            </table>
+        <div class="panel publish-panel">
+          <h3>5. Publish Results</h3>
+          <p>Every edit is automatically saved as a <strong>local draft</strong>. It does not update the public website until you export and commit a new JSON file.</p>
+          <div class="form-actions">
+            <button type="button" id="exportJsonButton">Download results.json</button>
+            <label class="file-button" for="importJsonInput">Import JSON <input type="file" id="importJsonInput" accept=".json,application/json" hidden></label>
+            <button type="button" class="danger-btn" id="resetDraftButton">Discard Draft / Load Published JSON</button>
           </div>
+          <p id="publishMessage" class="message" role="status"></p>
+          <p class="help-text">Copy your downloaded <code>results.json</code> into <code>data/results.json</code> in the Git repository, commit and push. Visitors will then see the new results after Pages deploys.</p>
         </div>
       </div>
     </section>
   </main>
-
-  <footer>
-    <strong>CSI Elanthoor District Youth Kalamela</strong>
-    <p>Celebrating Talent and Unity.</p>
-  </footer>
-
-  <script src="script.js"></script>
+  <footer class="site-footer"><div class="footer-inner"><div><div class="footer-name">CSI Elanthoor District <span>· Youth Kalamela</span></div><p>Celebrating talent, fellowship and the joy of participation.</p></div><div class="footer-source"><a href="https://csimadhyakeraladiocese.org/organisations/youth-movement/" target="_blank" rel="noopener noreferrer">CSI Madhya Kerala Diocesan Youth Movement ↗</a><small>Organisation history and image: official diocesan website</small></div></div></footer>
 </body>
 </html>
