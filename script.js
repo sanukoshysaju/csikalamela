@@ -110,6 +110,8 @@ let publishedData = emptyData();
 let adminUnlocked = false;
 let publishedLoaded = false;
 let editingParticipantId = null;
+let activeAdminTab = "churches";
+
 
 const el = id => document.getElementById(id);
 const escapeHTML = value => String(value ?? "").replace(/[&<>"']/g, c => ({
@@ -352,17 +354,48 @@ function requireEditor() {
   return false;
 }
 
+function activateAdminTab(tabId, focus = false) {
+  const valid = ["churches", "events", "participants", "winners", "recorded", "publish"];
+  if (!valid.includes(tabId)) return;
+  activeAdminTab = tabId;
+  document.querySelectorAll("[data-admin-tab]").forEach(button => {
+    const active = button.dataset.adminTab === tabId;
+    button.classList.toggle("active", active);
+    button.setAttribute("aria-selected", String(active));
+    button.tabIndex = active ? 0 : -1;
+    if (active && focus) button.focus();
+  });
+  document.querySelectorAll(".admin-tab-panel").forEach(panel => {
+    panel.classList.toggle("hidden", panel.id !== "pane-" + tabId);
+  });
+}
 function renderPastorates() {
-  el("pastorateList").innerHTML = CHURCH_FAMILIES.map(family => {
+  const search = el("churchSearch").value.trim().toLowerCase();
+  const filtered = CHURCH_FAMILIES.filter(family => {
     const churches = PASTORATES.filter(p => p.mainId === family.main);
-    return `<div class="pastorate-family"><h4>${escapeHTML(family.pastorate)} Pastorate</h4>
-      ${churches.map(p => `<div class="church-entry"><span class="church-type ${p.category}">${p.category === "pastorate" ? "Main pastorate" : "Outstation"}</span><span>${escapeHTML(p.name)}</span></div>`).join("")}</div>`;
-  }).join("");
+    return !search || (family.pastorate + " " + churches.map(p => p.name).join(" ")).toLowerCase().includes(search);
+  });
+  el("directoryRegisteredCount").textContent = data.participants.length;
+  el("pastorateList").innerHTML = filtered.length ? filtered.map((family, i) => {
+    const main = PASTORATES.find(p => p.id === family.main);
+    const outstations = PASTORATES.filter(p => p.mainId === family.main && p.category === "outstation");
+    const familyParticipants = data.participants.filter(p => p.pastorateId === family.main || outstations.some(c => c.id === p.pastorateId));
+    return `<article class="directory-card">
+      <div class="directory-card-header"><div class="directory-family-icon" aria-hidden="true">${String(CHURCH_FAMILIES.indexOf(family) + 1).padStart(2,"0")}</div><div><span class="directory-kicker">PASTORATE FAMILY</span><h4>${escapeHTML(family.pastorate)}</h4></div><span class="directory-member-count">${familyParticipants.length} registered</span></div>
+      <div class="directory-church main"><span class="directory-dot" aria-hidden="true"></span><div><span class="church-type pastorate">Main pastorate</span><strong>${escapeHTML(main.name)}</strong></div><span class="directory-points">${pointLabel(getPastorateTotal(main.id))} pts</span></div>
+      <div class="directory-outstations"><span class="directory-section-label">${outstations.length} OUTSTATION${outstations.length === 1 ? "" : "S"}</span>
+      ${outstations.map(p => `<div class="directory-church"><span class="directory-dot" aria-hidden="true"></span><div><span class="church-type outstation">Outstation</span><span>${escapeHTML(p.name)}</span></div><span class="directory-points">${pointLabel(getPastorateTotal(p.id))} pts</span></div>`).join("")}</div>
+    </article>`;
+  }).join("") : '<p class="directory-empty">No pastorates or outstations match your search.</p>';
 }
 function renderEventManager() {
-  el("eventRows").innerHTML = MASTER_EVENTS.map(e => `<tr><td>${escapeHTML(e.category)}</td>
+  const search = el("eventSearch").value.trim().toLowerCase();
+  const filter = el("eventTagFilter").value;
+  const matches = MASTER_EVENTS.filter(e => (!filter || e.tag === filter) &&
+    (!search || (e.name + " " + e.category).toLowerCase().includes(search)));
+  el("eventRows").innerHTML = matches.length ? matches.map(e => `<tr><td>${escapeHTML(e.category)}</td>
     <td>${escapeHTML(e.name)}</td><td><span class="event-tag ${e.tag}">${escapeHTML(e.tag)}</span></td>
-    <td>${data.eventCounts[e.id] ?? "Not recorded"}</td></tr>`).join("");
+    <td>${data.eventCounts[e.id] ?? "Not recorded"}</td></tr>`).join("") : '<tr><td colspan="4">No matching events.</td></tr>';
 }
 function fillSelect(select, options, placeholder, preserve = true) {
   const previous = preserve ? select.value : "";
@@ -499,6 +532,55 @@ function deleteParticipant(id) {
   message("memberMessage", "Participant deleted.");
   saveDraft();
 }
+const DEMO_NAMES = [
+  { name: "DEMO - Anu", gender: "Female" },
+  { name: "DEMO - Arun", gender: "Male" },
+  { name: "DEMO - Meera", gender: "Female" },
+  { name: "DEMO - Rahul", gender: "Male" }
+];
+function loadDemoParticipants() {
+  if (!requireEditor()) return;
+  let added = 0;
+  for (const church of PASTORATES) {
+    DEMO_NAMES.forEach((template, index) => {
+      const id = `demo-${church.id}-${index + 1}`;
+      if (data.participants.some(person => person.id === id)) return;
+      data.participants.push({
+        id, pastorateId: church.id,
+        name: `${template.name} [${church.id.toUpperCase()}]`,
+        gender: template.gender
+      });
+      added++;
+    });
+  }
+  if (added) saveDraft();
+  message("demoMessage", added
+    ? `Added ${added} DEMO participants across all 21 churches. They are local testing data until you export JSON.`
+    : "Sample participants already loaded; no duplicates added.");
+}
+function removeDemoParticipants() {
+  if (!requireEditor()) return;
+  const demoPeople = data.participants.filter(p => /^demo-p\d{2}-\d+$/.test(p.id));
+  if (!demoPeople.length) return message("demoMessage", "No sample participants found.");
+  const removable = demoPeople.filter(p => !participantIsInResults(p.id));
+  const retained = demoPeople.length - removable.length;
+  if (!removable.length) return message("demoMessage", `${retained} demo participants are referenced by event results. Clear those results first.`, true);
+  if (!confirm(`Remove ${removable.length} unused DEMO participants? ${retained} with results will remain.`)) return;
+  const ids = new Set(removable.map(p => p.id));
+  data.participants = data.participants.filter(p => !ids.has(p.id));
+  resetParticipantEditor();
+  saveDraft();
+  message("demoMessage", `Removed ${removable.length} DEMO participants. ${retained} remain in recorded results.`);
+}
+function updateDemoStats() {
+  const total = data.participants.filter(p => /^demo-p\d{2}-\d+$/.test(p.id)).length;
+  el("tabParticipantCount").textContent = data.participants.length;
+  el("tabResultsCount").textContent = Object.keys(data.results).filter(id => Object.keys(data.results[id]).length).length;
+  el("demoDataSummary").textContent = total
+    ? `${total} DEMO participants present. Remove them before publishing actual results.`
+    : "No DEMO participants in the current draft.";
+}
+
 function renderParticipantList() {
   const churchId = el("memberChurch").value;
   const container = el("memberList");
@@ -527,36 +609,49 @@ function fieldWrap(labelText, inputId) {
   block.append(label);
   return block;
 }
+// Each place owns a separate picker. A church change refreshes ONLY that place.
 function renderWinnerSelection(place, selectedMemberIds = []) {
   const competition = eventById(el("resultEvent").value);
-  const churchId = el("podiumPastorate" + place).value;
+  const churchId = el("podiumPastorate" + place)?.value || "";
   const target = el("podiumMembers" + place);
+  if (!target) return;
   target.replaceChildren();
   if (!competition) return;
+  const people = peopleForChurch(churchId);
   if (competition.type === "individual") {
     const label = document.createElement("label");
     label.htmlFor = "podiumParticipant" + place;
     label.textContent = "Participant";
     const select = document.createElement("select");
     select.id = "podiumParticipant" + place;
-    select.add(new Option("Select registered participant", ""));
-    peopleForChurch(churchId).filter(person => !competition.awardGender ||
-      person.gender === (competition.awardGender === "Boy" ? "Male" : "Female") ||
-      person.gender === "Unspecified").forEach(person => {
-      select.add(new Option(`${person.name} (${person.gender})`, person.id));
-    });
-    if (selectedMemberIds.length) select.value = selectedMemberIds[0];
-    target.append(label, select);
-    if (!churchId || select.options.length === 1) {
-      const note = document.createElement("small");
-      note.textContent = churchId ? "No eligible participants registered for this church." : "Select a church first.";
-      target.append(note);
+    select.dataset.winnerParticipant = String(place);
+    select.add(new Option(churchId ? "Select registered participant" : "Choose a church first", ""));
+    const requiredGender = competition.awardGender === "Boy" ? "Male" :
+      competition.awardGender === "Girl" ? "Female" : null;
+    let eligibleCount = 0;
+    for (const person of people) {
+      const eligible = !requiredGender || person.gender === requiredGender || person.gender === "Unspecified";
+      const option = new Option(person.name + " (" + person.gender + ")", person.id);
+      // Show all registered names; indicate ineligible gender instead of an inexplicably empty list.
+      option.disabled = !eligible;
+      select.add(option);
+      if (eligible) eligibleCount++;
     }
+    if (selectedMemberIds.length && people.some(p => p.id === selectedMemberIds[0])) {
+      select.value = selectedMemberIds[0];
+    }
+    target.append(label, select);
+    const note = document.createElement("small");
+    note.className = "picker-status";
+    note.textContent = !churchId ? "Choose a church for this place to see its participants." :
+      !people.length ? "No participants registered for this church. Open Participants tab to add them." :
+      !eligibleCount ? `This church has ${people.length} registered participant(s), but no ${requiredGender || "eligible"} entrants for this competition.` :
+      `${eligibleCount} eligible of ${people.length} registered participant(s) · Choose for ${ordinal(place)} place.`;
+    target.append(note);
   } else {
     const label = document.createElement("label");
     label.textContent = "Group members (select two or more)";
     target.append(label);
-    const people = peopleForChurch(churchId);
     const details = document.createElement("details");
     details.className = "member-picker";
     const summary = document.createElement("summary");
@@ -566,7 +661,7 @@ function renderWinnerSelection(place, selectedMemberIds = []) {
     choices.className = "member-choices";
     if (!people.length) {
       const note = document.createElement("p");
-      note.textContent = churchId ? "Register participants for this church first." : "Select a church first.";
+      note.textContent = churchId ? "No participants registered for this church. Add them in Participants." : "Select a church first.";
       choices.append(note);
     }
     for (const person of people) {
@@ -637,7 +732,7 @@ function showEventForm() {
     church.id = "podiumPastorate" + place;
     fillChurchSelect(church, "Select a church", false);
     church.value = saved?.pastorateId || "";
-    church.addEventListener("change", () => renderWinnerSelection(place));
+    church.dataset.winnerChurch = String(place);
     churchWrap.append(church);
     fields.append(churchWrap);
     const personBlock = document.createElement("div");
@@ -743,7 +838,9 @@ function clearResultsForEvent(eventId = el("resultEvent").value) {
   message("resultMessage", "Cleared results and competing entry count for " + competition.name + ".");
 }
 function renderRecordedEvents() {
-  el("recordedEventRows").innerHTML = MASTER_EVENTS.map(competition => {
+  const search = el("recordedSearch").value.trim().toLowerCase();
+  const filtered = MASTER_EVENTS.filter(e => !search || (e.name + " " + e.tag).toLowerCase().includes(search));
+  el("recordedEventRows").innerHTML = filtered.length ? filtered.map(competition => {
     const positions = Object.keys(data.results[competition.id] || {}).length;
     const missing = competition.type === "group" && Object.values(data.results[competition.id] || {})
       .some(entry => !entry.participantIds.length);
@@ -752,7 +849,7 @@ function renderRecordedEvents() {
     <td>${positions} / 3${missing ? ' <span class="missing-members">· Assign group members for tie-breaks</span>' : ""}</td>
     <td class="action-cell"><button type="button" class="small-action edit-btn" data-result-action="edit" data-id="${competition.id}">Edit</button>
     <button type="button" class="small-action danger-btn" data-result-action="clear" data-id="${competition.id}">Clear</button></td></tr>`;
-  }).join("");
+  }).join("") : '<tr><td colspan="5">No matching events.</td></tr>';
 }
 
 // The pastorate receives the FULL result points once, regardless of group size.
@@ -915,6 +1012,7 @@ function renderPublicEnhancements() {
   renderCategoryPodium("outstation", "topOutstationPodium");
 }
 function renderAll() {
+  updateDemoStats();
   renderDropdowns();
   renderPastorates();
   renderEventManager();
@@ -986,6 +1084,30 @@ async function resetDraft() {
   } catch (error) { message("publishMessage", "Cannot load published data: " + error.message, true); }
 }
 function attachHandlers() {
+  document.querySelectorAll("[data-admin-tab]").forEach(button => {
+    button.addEventListener("click", () => activateAdminTab(button.dataset.adminTab));
+    button.addEventListener("keydown", event => {
+      if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
+      const tabs = [...document.querySelectorAll("[data-admin-tab]")];
+      const index = tabs.indexOf(button);
+      const next = event.key === "Home" ? 0 : event.key === "End" ? tabs.length - 1 :
+        (index + (event.key === "ArrowRight" ? 1 : -1) + tabs.length) % tabs.length;
+      event.preventDefault();
+      activateAdminTab(tabs[next].dataset.adminTab, true);
+    });
+  });
+  el("churchSearch").addEventListener("input", renderPastorates);
+  el("eventSearch").addEventListener("input", renderEventManager);
+  el("eventTagFilter").addEventListener("change", renderEventManager);
+  el("recordedSearch").addEventListener("input", renderRecordedEvents);
+  el("addDemoParticipants").addEventListener("click", loadDemoParticipants);
+  el("removeDemoParticipants").addEventListener("click", removeDemoParticipants);
+  el("podiumRows").addEventListener("change", event => {
+    const churchPicker = event.target.closest("select[data-winner-church]");
+    if (churchPicker) {
+      renderWinnerSelection(Number(churchPicker.dataset.winnerChurch));
+    }
+  });
   document.querySelectorAll("[data-page]").forEach(button => {
     button.addEventListener("click", () => showPage(button.dataset.page));
   });
@@ -1021,12 +1143,14 @@ function attachHandlers() {
     if (button.dataset.resultAction === "edit") {
       el("resultEvent").value = eventId;
       showEventForm();
+      activateAdminTab("winners");
       el("resultEvent").scrollIntoView({ block: "center", behavior: "smooth" });
     }
   });
 }
 async function initialise() {
   attachHandlers();
+  activateAdminTab("churches");
   updateAdminVisibility();
   renderAll();
   showPage("home");

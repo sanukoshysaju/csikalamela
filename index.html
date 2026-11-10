@@ -142,85 +142,76 @@
       </div>
       <div id="adminWorkspace" class="hidden">
         <div class="admin-topbar">
-          <span>Local editor • Draft saved in this browser</span>
+          <span>Local editor <span class="draft-pill">Draft saved in this browser</span></span>
           <button type="button" id="logoutButton" class="danger-btn">Lock editor</button>
         </div>
-        <div class="panel">
-          <h3>1. Churches &amp; parent pastorates (fixed list)</h3>
-          <p class="help-text">The 21 churches were loaded from your supplied church list. No need to type them again.</p>
-          <div id="pastorateList" class="pastorate-grid"></div>
+
+        <div class="admin-tabs" role="tablist" aria-label="Admin Panel sections">
+          <button type="button" id="tab-churches" class="admin-tab active" role="tab" aria-controls="pane-churches" aria-selected="true" data-admin-tab="churches"><span aria-hidden="true">⌂</span> Churches</button>
+          <button type="button" id="tab-events" class="admin-tab" role="tab" aria-controls="pane-events" aria-selected="false" data-admin-tab="events"><span aria-hidden="true">▤</span> Events</button>
+          <button type="button" id="tab-participants" class="admin-tab" role="tab" aria-controls="pane-participants" aria-selected="false" data-admin-tab="participants"><span aria-hidden="true">♙</span> Participants <span id="tabParticipantCount" class="tab-count">0</span></button>
+          <button type="button" id="tab-winners" class="admin-tab" role="tab" aria-controls="pane-winners" aria-selected="false" data-admin-tab="winners"><span aria-hidden="true">★</span> Enter Winners</button>
+          <button type="button" id="tab-recorded" class="admin-tab" role="tab" aria-controls="pane-recorded" aria-selected="false" data-admin-tab="recorded"><span aria-hidden="true">≡</span> Recorded Results <span id="tabResultsCount" class="tab-count">0</span></button>
+          <button type="button" id="tab-publish" class="admin-tab" role="tab" aria-controls="pane-publish" aria-selected="false" data-admin-tab="publish"><span aria-hidden="true">↥</span> Publish</button>
         </div>
-        <div class="panel">
-          <h3>2. Competition Events (fixed master list)</h3>
-          <p class="help-text">Events have one fixed tag: <strong>stage</strong>, <strong>writing</strong> or <strong>group</strong>. These provisional tags are defined in <code>MASTER_EVENTS</code> in <code>script.js</code> and can be corrected there.</p>
-          <div class="table-wrap"><table>
-            <thead><tr><th>Category</th><th>Competition</th><th>Tag</th><th>Competing entries</th></tr></thead>
-            <tbody id="eventRows"></tbody>
-          </table></div>
-        </div>
-        <div class="panel">
-          <h3>3. Register Participants</h3>
-          <p class="help-text">Choose a main pastorate church or outstation, then register each participant’s full name and gender once. Winners are chosen from these registered participants.</p>
+
+        <section id="pane-churches" class="panel admin-tab-panel" role="tabpanel" aria-labelledby="tab-churches">
+          <div class="admin-panel-heading"><div><p class="eyebrow">MASTER DIRECTORY</p><h3>Churches &amp; parent pastorates</h3><p>All 21 churches are fixed in JavaScript. Main churches and their outstations are displayed together.</p></div><span class="heading-decor" aria-hidden="true">⌂</span></div>
+          <div class="directory-stats" aria-label="Church directory statistics">
+            <div><strong>10</strong><span>Pastorates</span></div><div><strong>11</strong><span>Outstations</span></div><div><strong>21</strong><span>Total churches</span></div><div><strong id="directoryRegisteredCount">0</strong><span>Registered members</span></div>
+          </div>
+          <label for="churchSearch">Search church or parent pastorate</label>
+          <input id="churchSearch" class="search-input" type="search" placeholder="e.g. Elanthoor, Kaattoor, St. Paul's" autocomplete="off">
+          <div id="pastorateList" class="pastorate-grid pastorate-directory"></div>
+        </section>
+
+        <section id="pane-events" class="panel admin-tab-panel hidden" role="tabpanel" aria-labelledby="tab-events">
+          <div class="admin-panel-heading"><div><p class="eyebrow">COMPETITION MASTER</p><h3>Fixed competition events</h3><p>Events have fixed tags: <strong>stage</strong>, <strong>writing</strong>, or <strong>group</strong>. Correct a tag in <code>MASTER_EVENTS</code> in <code>script.js</code> when needed.</p></div><span class="heading-decor" aria-hidden="true">▤</span></div>
+          <div class="event-filter-row"><div><label for="eventSearch">Search events</label><input id="eventSearch" type="search" placeholder="Search competition name" autocomplete="off"></div><div><label for="eventTagFilter">Event type</label><select id="eventTagFilter"><option value="">All event tags</option><option value="stage">Stage</option><option value="writing">Writing</option><option value="group">Group</option></select></div></div>
+          <div class="table-wrap"><table><thead><tr><th>Category</th><th>Competition</th><th>Tag</th><th>Competing entries</th></tr></thead><tbody id="eventRows"></tbody></table></div>
+        </section>
+
+        <section id="pane-participants" class="panel admin-tab-panel hidden" role="tabpanel" aria-labelledby="tab-participants">
+          <div class="admin-panel-heading"><div><p class="eyebrow">PARTICIPANT REGISTRATION</p><h3>Register participants</h3><p>Choose a church and register each participant's full name and gender. They will become available in the winner selectors.</p></div><span class="heading-decor" aria-hidden="true">♙</span></div>
+          <div class="sample-data-panel"><div><strong>Need test participants?</strong><p>Load four clearly marked DEMO participants (2 male and 2 female) for every one of the 21 churches. Test names are stored in your local draft only unless you choose to export them.</p><p id="demoDataSummary" class="sample-data-status">No sample records added yet.</p></div><div class="sample-data-actions"><button type="button" id="addDemoParticipants" class="secondary-btn dark-outline">Load sample participants</button><button type="button" id="removeDemoParticipants" class="danger-btn">Remove unused demo participants</button></div></div>
+          <p id="demoMessage" class="message" role="status" aria-live="polite"></p>
           <form id="memberForm">
             <label for="memberChurch">Pastorate / Outstation</label>
             <select id="memberChurch" required><option value="">Select church</option></select>
-            <div class="participant-form-grid">
-              <div><label for="memberName">Full name</label><input id="memberName" maxlength="120" placeholder="Enter participant full name" required></div>
-              <div><label for="memberGender">Gender</label><select id="memberGender" required><option value="">Select gender</option><option value="Male">Male</option><option value="Female">Female</option></select></div>
-            </div>
-            <div class="form-actions"><button type="submit" id="saveMemberButton">Add participant</button>
-              <button type="button" id="cancelMemberEdit" class="secondary-btn dark-outline hidden">Cancel edit</button></div>
+            <div class="participant-form-grid"><div><label for="memberName">Full name</label><input id="memberName" maxlength="120" placeholder="Enter participant full name" required></div><div><label for="memberGender">Gender</label><select id="memberGender" required><option value="">Select gender</option><option value="Male">Male</option><option value="Female">Female</option></select></div></div>
+            <div class="form-actions"><button type="submit" id="saveMemberButton">Add participant</button><button type="button" id="cancelMemberEdit" class="secondary-btn dark-outline hidden">Cancel edit</button></div>
           </form>
-          <details class="bulk-register">
-            <summary>Quick add multiple participants (optional)</summary>
-            <p class="help-text">Select a church above, then enter one person per line, for example <code>Anu Thomas, Female</code> or <code>Arun George, Male</code>. Existing names in that church are skipped.</p>
-            <label for="bulkMemberLines">Full name, Gender — one per line</label>
-            <textarea id="bulkMemberLines" rows="5" placeholder="Anu Thomas, Female
-Arun George, Male"></textarea>
-            <button type="button" id="bulkAddButton">Add all listed participants</button>
-          </details>
+          <details class="bulk-register"><summary>Quick add multiple participants (optional)</summary><p class="help-text">Select a church above, then enter one person per line, such as <code>Anu Thomas, Female</code> or <code>Arun George, Male</code>.</p><label for="bulkMemberLines">Full name, Gender — one per line</label><textarea id="bulkMemberLines" rows="5" placeholder="Anu Thomas, Female&#10;Arun George, Male"></textarea><button type="button" id="bulkAddButton">Add all listed participants</button></details>
           <p id="memberMessage" class="message" role="status"></p>
           <div class="member-list-heading"><h4>Registered members</h4><span id="memberCount" class="micro-label">0 registered</span></div>
           <div id="memberList" class="member-list"></div>
-        </div>
-        <div class="panel">
-          <h3>4. Record 1st / 2nd / 3rd Place Winners</h3>
-          <label for="resultEvent">Select an Event</label>
-          <select id="resultEvent"><option value="">Choose event</option></select>
+        </section>
+
+        <section id="pane-winners" class="panel admin-tab-panel hidden" role="tabpanel" aria-labelledby="tab-winners">
+          <div class="admin-panel-heading"><div><p class="eyebrow">RESULT ENTRY</p><h3>Record 1st / 2nd / 3rd Place Winners</h3><p>Select an event, enter its competitor count, and assign each place to a church and its eligible registered participant(s).</p></div><span class="heading-decor" aria-hidden="true">★</span></div>
+          <label for="resultEvent">Select an Event</label><select id="resultEvent"><option value="">Choose event</option></select>
           <p id="resultEventHelp" class="help-text">Select an event first.</p>
           <form id="resultForm" class="hidden">
-            <div id="eventEntryCountWrap" class="event-entry-count hidden">
-              <label for="eventEntryCount" id="eventEntryCountLabel">Total number of participants / teams</label>
-              <input id="eventEntryCount" type="number" min="1" step="1" max="100000" inputmode="numeric" placeholder="Enter total competing entries">
-              <p id="eventCountHint" class="help-text">Count all competitors in this entire event, including those who did not win.</p>
-            </div>
+            <div id="eventEntryCountWrap" class="event-entry-count hidden"><label for="eventEntryCount" id="eventEntryCountLabel">Total number of participants / teams</label><input id="eventEntryCount" type="number" min="1" step="1" max="100000" inputmode="numeric" placeholder="Enter total competing entries"><p id="eventCountHint" class="help-text">Count all competitors in this event, not just winners.</p></div>
             <div id="podiumRows"></div>
-            <div class="form-actions">
-              <button type="submit">Save / Update Event Results</button>
-              <button type="button" id="clearEventResults" class="danger-btn">Clear This Event's Results</button>
-            </div>
+            <div class="form-actions"><button type="submit">Save / Update Event Results</button><button type="button" id="clearEventResults" class="danger-btn">Clear This Event's Results</button></div>
           </form>
           <p id="resultMessage" class="message" role="status"></p>
-        </div>
-        <div class="panel">
-          <h3>5. Recorded Event Results</h3>
-          <p class="help-text">Click Edit to load an event’s existing winners, or Clear to remove its results. The competition list itself cannot be changed here.</p>
-          <div class="table-wrap"><table>
-            <thead><tr><th>Competition</th><th>Tag</th><th>Teams / Participants</th><th>Recorded positions</th><th>Actions</th></tr></thead>
-            <tbody id="recordedEventRows"></tbody>
-          </table></div>
-        </div>
-        <div class="panel publish-panel">
-          <h3>6. Publish Participants &amp; Results</h3>
-          <p>Participants, genders, event competitor/team counts and results are automatically saved together as a <strong>local draft</strong>. The public site updates only when you export and commit the new JSON file.</p>
-          <div class="form-actions">
-            <button type="button" id="exportJsonButton">Download results.json</button>
-            <label class="file-button" for="importJsonInput">Import JSON <input type="file" id="importJsonInput" accept=".json,application/json" hidden></label>
-            <button type="button" class="danger-btn" id="resetDraftButton">Discard Draft / Load Published JSON</button>
-          </div>
+        </section>
+
+        <section id="pane-recorded" class="panel admin-tab-panel hidden" role="tabpanel" aria-labelledby="tab-recorded">
+          <div class="admin-panel-heading"><div><p class="eyebrow">RESULTS MANAGEMENT</p><h3>Recorded event results</h3><p>Edit an event to correct its winners, or clear results from the event. The fixed master competition list cannot be changed here.</p></div><span class="heading-decor" aria-hidden="true">≡</span></div>
+          <label for="recordedSearch">Find an event</label><input id="recordedSearch" type="search" placeholder="Search recorded event" autocomplete="off">
+          <div class="table-wrap"><table><thead><tr><th>Competition</th><th>Tag</th><th>Teams / Participants</th><th>Recorded places</th><th>Actions</th></tr></thead><tbody id="recordedEventRows"></tbody></table></div>
+        </section>
+
+        <section id="pane-publish" class="panel admin-tab-panel publish-panel hidden" role="tabpanel" aria-labelledby="tab-publish">
+          <div class="admin-panel-heading"><div><p class="eyebrow">GITHUB PAGES</p><h3>Publish participants &amp; results</h3><p>Data is saved automatically as a local browser draft. Public visitors see changes only when you export and commit the new JSON file.</p></div><span class="heading-decor" aria-hidden="true">↥</span></div>
+          <div class="publish-steps"><div><b>01</b><strong>Review</strong><span>Check participants, winners and scores.</span></div><div><b>02</b><strong>Export</strong><span>Download the updated results.json file.</span></div><div><b>03</b><strong>Push</strong><span>Replace data/results.json in GitHub and commit.</span></div></div>
+          <div class="form-actions"><button type="button" id="exportJsonButton">Download results.json</button><label class="file-button" for="importJsonInput">Import JSON <input type="file" id="importJsonInput" accept=".json,application/json" hidden></label><button type="button" class="danger-btn" id="resetDraftButton">Discard Draft / Load Published JSON</button></div>
           <p id="publishMessage" class="message" role="status"></p>
-          <p class="help-text">Copy your downloaded <code>results.json</code> into <code>data/results.json</code> in the Git repository, commit and push. Visitors will then see the new results after Pages deploys.</p>
-        </div>
+          <p class="help-text"><strong>Important:</strong> DEMO participants are intended for local testing only. Remove them before publishing real participant lists, unless the demo records are being used intentionally for testing a private repository.</p>
+        </section>
       </div>
     </section>
   </main>
