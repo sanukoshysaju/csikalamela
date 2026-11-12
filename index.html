@@ -9,8 +9,8 @@
   <meta property="og:description" content="Celebrating talent, faith and fellowship. Explore the scoreboard, pastorate rankings and outstation standings.">
   <title>CSI Elanthoor District Youth Kalamela | Results &amp; Standings</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="style.css">
-  <script src="script.js" defer></script>
+  <link rel="stylesheet" href="style.css?v=8">
+  <script src="script.js?v=8" defer></script>
 </head>
 <body>
   <header class="header">
@@ -26,7 +26,7 @@
           <span class="brand-sub">YOUTH KALAMELA</span>
         </div>
       </div>
-      <nav aria-label="Main navigation">
+      <nav class="site-navigation" aria-label="Main navigation">
         <button type="button" class="nav-btn active" data-page="home">Home</button>
         <button type="button" class="nav-btn" data-page="scoreboard">Scoreboard</button>
         <button type="button" class="nav-btn" data-page="leaderboard">Leaderboard</button>
@@ -90,9 +90,9 @@
         <select id="scorePastorate"><option value="">Choose church</option></select>
         <div class="total-card"><div><small>CHURCH TOTAL</small><span id="selectedPastorateName">Select a church</span><span id="selectedChurchContext" class="church-context">Choose a main pastorate church or an outstation</span></div><div class="score-figure"><strong id="selectedPastoratePoints">0</strong><small>PTS</small></div></div>
         <div class="table-title-row"><h4>Winning entries</h4><span class="table-hint">Individual &amp; group events</span></div>
-        <div class="table-wrap"><table><thead><tr><th>Event</th><th>Place</th><th>Participant / Group members</th><th>Church points</th></tr></thead><tbody id="pastorateResultsRows"><tr><td colspan="4">Select a church.</td></tr></tbody></table></div>
+        <div class="table-wrap"><table class="mobile-card-table"><thead><tr><th>Event</th><th>Place</th><th>Participant / Group members</th><th>Church points</th></tr></thead><tbody id="pastorateResultsRows"><tr><td colspan="4">Select a church.</td></tr></tbody></table></div>
         <div class="table-title-row individual-breakdown"><h4>Registered participants &amp; personal points</h4><span class="table-hint">Group placings only break award ties</span></div>
-        <div class="table-wrap"><table><thead><tr><th>Participant</th><th>Gender</th><th>Individual points</th><th>Award-eligible points</th><th>Group tie-break bonus</th></tr></thead><tbody id="churchMemberScoreRows"><tr><td colspan="5">Select a church.</td></tr></tbody></table></div>
+        <div class="table-wrap"><table class="mobile-card-table"><thead><tr><th>Participant</th><th>Gender</th><th>Individual points</th><th>Award-eligible points</th><th>Group tie-break bonus</th></tr></thead><tbody id="churchMemberScoreRows"><tr><td colspan="5">Select a church.</td></tr></tbody></table></div>
       </div>
       <details class="panel matrix-panel" id="matrixDetails">
         <summary><div><p class="eyebrow">DETAILED BREAKDOWN</p><h3>All-Church Results Matrix</h3><p>21 churches × 34 events, with category, parent pastorate and totals in each row.</p></div><span class="details-toggle">View matrix <span aria-hidden="true">⌄</span></span></summary>
@@ -110,23 +110,24 @@
       <section class="leaderboard-category" aria-labelledby="mainRankHeading">
         <div class="leaders-intro"><div><p class="eyebrow">MAIN CHURCHES · 10</p><h3 id="mainRankHeading">Leading Pastorates</h3></div><p>Ranked by their own church's points</p></div>
         <div id="topPastoratePodium" class="top-podium" aria-label="Top three main pastorates"><div class="empty-podium">Results have not been published yet.</div></div>
-        <div class="panel standings-panel"><div class="panel-head"><div><p class="eyebrow">MAIN PASTORATES</p><h3>Pastorate Standings</h3></div><span class="micro-label">10 MAIN CHURCHES</span></div><div class="table-wrap"><table class="leaderboard-table"><thead><tr><th>Rank</th><th>Main Pastorate Church</th><th>Points</th></tr></thead><tbody id="pastorateLeaderboardRows"></tbody></table></div></div>
+        <div class="panel standings-panel"><div class="panel-head"><div><p class="eyebrow">MAIN PASTORATES</p><h3>Pastorate Standings</h3></div><span class="micro-label">10 MAIN CHURCHES</span></div><div class="table-wrap"><table class="leaderboard-table mobile-card-table"><thead><tr><th>Rank</th><th>Main Pastorate Church</th><th>Points</th></tr></thead><tbody id="pastorateLeaderboardRows"></tbody></table></div></div>
       </section>
       <section class="leaderboard-category outstation-section" aria-labelledby="outstationRankHeading">
         <div class="leaders-intro"><div><p class="eyebrow">OUTSTATION CHURCHES · 11</p><h3 id="outstationRankHeading">Leading Outstations</h3></div><p>Ranked independently from their parent pastorate</p></div>
         <div id="topOutstationPodium" class="top-podium" aria-label="Top three outstations"><div class="empty-podium">Results have not been published yet.</div></div>
-        <div class="panel standings-panel"><div class="panel-head"><div><p class="eyebrow">OUTSTATIONS</p><h3>Outstation Standings</h3></div><span class="micro-label">11 OUTSTATIONS</span></div><div class="table-wrap"><table class="leaderboard-table"><thead><tr><th>Rank</th><th>Outstation Church</th><th>Parent Pastorate</th><th>Points</th></tr></thead><tbody id="outstationLeaderboardRows"></tbody></table></div></div>
+        <div class="panel standings-panel"><div class="panel-head"><div><p class="eyebrow">OUTSTATIONS</p><h3>Outstation Standings</h3></div><span class="micro-label">11 OUTSTATIONS</span></div><div class="table-wrap"><table class="leaderboard-table mobile-card-table"><thead><tr><th>Rank</th><th>Outstation Church</th><th>Parent Pastorate</th><th>Points</th></tr></thead><tbody id="outstationLeaderboardRows"></tbody></table></div></div>
       </section>
-      <div class="leaders-intro awards-heading"><div><p class="eyebrow">YOUTH EXCELLENCE</p><h3>Individual recognitions</h3></div></div>
-      <div class="award-grid"><article class="award-card girl-award"><span class="award-kicker">DISTINCTION · GIRLS</span><div class="award-symbol" aria-hidden="true">✿</div><h3>Kala Thilakam</h3><p id="kalaThilakamName" class="winner-name">Not decided yet</p><p id="kalaThilakamDetails" class="winner-details">Eligible individual points · group tie-break only</p></article><article class="award-card boy-award"><span class="award-kicker">DISTINCTION · BOYS</span><div class="award-symbol" aria-hidden="true">✦</div><h3>Kala Prathibha</h3><p id="kalaPrathibhaName" class="winner-name">Not decided yet</p><p id="kalaPrathibhaDetails" class="winner-details">Eligible individual points · group tie-break only</p></article></div>
-      <p class="award-disclaimer">Kala Thilakam and Kala Prathibha are ranked by individual-event points from events with at least 3 competitors. Individual events with 1–2 competitors still earn full church points, but do not count toward these awards. Only when eligible individual points are tied, participating group members receive tie-break bonuses: 1st +5, 2nd +3, 3rd +1. Group-event points themselves go entirely to the church, never to individual accounts. Equal scores after the tie-break remain tied.</p>
+      <div id="individualAwardsSection">
+        <div class="leaders-intro awards-heading"><div><p class="eyebrow">YOUTH EXCELLENCE</p><h3>Individual recognitions</h3></div></div>
+        <div class="award-grid"><article class="award-card girl-award"><span class="award-kicker">DISTINCTION · GIRLS</span><div class="award-symbol" aria-hidden="true">✿</div><h3>Kala Thilakam</h3><p id="kalaThilakamName" class="winner-name">Not decided yet</p><p id="kalaThilakamDetails" class="winner-details">Eligible individual points · group tie-break only</p></article><article class="award-card boy-award"><span class="award-kicker">DISTINCTION · BOYS</span><div class="award-symbol" aria-hidden="true">✦</div><h3>Kala Prathibha</h3><p id="kalaPrathibhaName" class="winner-name">Not decided yet</p><p id="kalaPrathibhaDetails" class="winner-details">Eligible individual points · group tie-break only</p></article></div>
+        <p class="award-disclaimer">Kala Thilakam and Kala Prathibha are ranked by individual-event points from events with at least 3 competitors. Individual events with 1–2 competitors still earn full church points, but do not count toward these awards. Only when eligible individual points are tied, participating group members receive tie-break bonuses: 1st +5, 2nd +3, 3rd +1. Group-event points themselves go entirely to the church, never to individual accounts. Equal scores after the tie-break remain tied.</p>
+      </div>
     </section>
 
     <section id="admin" class="page hidden">
       <div class="section-heading">
         <p class="eyebrow">LOCAL RESULT ENTRY</p>
         <h2>Admin Panel</h2>
-        <p>Register participants with gender, choose them for event results, and export the published JSON file.</p>
       </div>
       <div id="adminPublicNotice" class="panel hidden">
         <h3>Read-only public website</h3>
@@ -134,8 +135,6 @@
       </div>
       <div id="adminLogin" class="panel login-panel hidden">
         <h3>Local Editor Login</h3>
-        <p class="help-text">This PIN prevents accidental edits locally. It is <strong>not</strong> secure internet authentication; GitHub write access controls publishing.</p>
-        <label for="adminPassword">Local demo PIN</label>
         <input id="adminPassword" type="password" autocomplete="off" placeholder="Enter local PIN">
         <button type="button" id="loginButton">Unlock editor</button>
         <p id="loginMessage" class="message" role="status"></p>
@@ -168,13 +167,11 @@
         <section id="pane-events" class="panel admin-tab-panel hidden" role="tabpanel" aria-labelledby="tab-events">
           <div class="admin-panel-heading"><div><p class="eyebrow">COMPETITION MASTER</p><h3>Fixed competition events</h3><p>Events have fixed tags: <strong>stage</strong>, <strong>writing</strong>, or <strong>group</strong>. Correct a tag in <code>MASTER_EVENTS</code> in <code>script.js</code> when needed.</p></div><span class="heading-decor" aria-hidden="true">▤</span></div>
           <div class="event-filter-row"><div><label for="eventSearch">Search events</label><input id="eventSearch" type="search" placeholder="Search competition name" autocomplete="off"></div><div><label for="eventTagFilter">Event type</label><select id="eventTagFilter"><option value="">All event tags</option><option value="stage">Stage</option><option value="writing">Writing</option><option value="group">Group</option></select></div></div>
-          <div class="table-wrap"><table><thead><tr><th>Category</th><th>Competition</th><th>Tag</th><th>Competing entries</th></tr></thead><tbody id="eventRows"></tbody></table></div>
+          <div class="table-wrap"><table class="mobile-card-table"><thead><tr><th>Category</th><th>Competition</th><th>Tag</th><th>Competing entries</th></tr></thead><tbody id="eventRows"></tbody></table></div>
         </section>
 
         <section id="pane-participants" class="panel admin-tab-panel hidden" role="tabpanel" aria-labelledby="tab-participants">
           <div class="admin-panel-heading"><div><p class="eyebrow">PARTICIPANT REGISTRATION</p><h3>Register participants</h3><p>Choose a church and register each participant's full name and gender. They will become available in the winner selectors.</p></div><span class="heading-decor" aria-hidden="true">♙</span></div>
-          <div class="sample-data-panel"><div><strong>Need test participants?</strong><p>Load four clearly marked DEMO participants (2 male and 2 female) for every one of the 21 churches. Test names are stored in your local draft only unless you choose to export them.</p><p id="demoDataSummary" class="sample-data-status">No sample records added yet.</p></div><div class="sample-data-actions"><button type="button" id="addDemoParticipants" class="secondary-btn dark-outline">Load sample participants</button><button type="button" id="removeDemoParticipants" class="danger-btn">Remove unused demo participants</button></div></div>
-          <p id="demoMessage" class="message" role="status" aria-live="polite"></p>
           <form id="memberForm">
             <label for="memberChurch">Pastorate / Outstation</label>
             <select id="memberChurch" required><option value="">Select church</option></select>
@@ -188,6 +185,7 @@
         </section>
 
         <section id="pane-winners" class="panel admin-tab-panel hidden" role="tabpanel" aria-labelledby="tab-winners">
+          <label class="award-display-toggle"><input type="checkbox" id="showIndividualAwards" checked> Show Kala Thilakam and Kala Prathibha section on the leaderboard</label>
           <div class="admin-panel-heading"><div><p class="eyebrow">RESULT ENTRY</p><h3>Record 1st / 2nd / 3rd Place Winners</h3><p>Select an event, enter its competitor count, and assign each place to a church and its eligible registered participant(s).</p></div><span class="heading-decor" aria-hidden="true">★</span></div>
           <label for="resultEvent">Select an Event</label><select id="resultEvent"><option value="">Choose event</option></select>
           <p id="resultEventHelp" class="help-text">Select an event first.</p>
@@ -202,15 +200,19 @@
         <section id="pane-recorded" class="panel admin-tab-panel hidden" role="tabpanel" aria-labelledby="tab-recorded">
           <div class="admin-panel-heading"><div><p class="eyebrow">RESULTS MANAGEMENT</p><h3>Recorded event results</h3><p>Edit an event to correct its winners, or clear results from the event. The fixed master competition list cannot be changed here.</p></div><span class="heading-decor" aria-hidden="true">≡</span></div>
           <label for="recordedSearch">Find an event</label><input id="recordedSearch" type="search" placeholder="Search recorded event" autocomplete="off">
-          <div class="table-wrap"><table><thead><tr><th>Competition</th><th>Tag</th><th>Teams / Participants</th><th>Recorded places</th><th>Actions</th></tr></thead><tbody id="recordedEventRows"></tbody></table></div>
+          <div class="table-wrap"><table class="mobile-card-table"><thead><tr><th>Competition</th><th>Tag</th><th>Teams / Participants</th><th>Recorded places</th><th>Actions</th></tr></thead><tbody id="recordedEventRows"></tbody></table></div>
         </section>
 
         <section id="pane-publish" class="panel admin-tab-panel publish-panel hidden" role="tabpanel" aria-labelledby="tab-publish">
           <div class="admin-panel-heading"><div><p class="eyebrow">GITHUB PAGES</p><h3>Publish participants &amp; results</h3><p>Data is saved automatically as a local browser draft. Public visitors see changes only when you export and commit the new JSON file.</p></div><span class="heading-decor" aria-hidden="true">↥</span></div>
           <div class="publish-steps"><div><b>01</b><strong>Review</strong><span>Check participants, winners and scores.</span></div><div><b>02</b><strong>Export</strong><span>Download the updated results.json file.</span></div><div><b>03</b><strong>Push</strong><span>Replace data/results.json in GitHub and commit.</span></div></div>
           <div class="form-actions"><button type="button" id="exportJsonButton">Download results.json</button><label class="file-button" for="importJsonInput">Import JSON <input type="file" id="importJsonInput" accept=".json,application/json" hidden></label><button type="button" class="danger-btn" id="resetDraftButton">Discard Draft / Load Published JSON</button></div>
+          <div class="fresh-start-panel">
+            <div><strong>Start with a clean results sheet</strong><p>Clear all registered participants, event winners and participant/team counts in this browser. Fixed churches and competitions are unaffected. To clear the public site too, export and publish the empty results.json afterward.</p></div>
+            <button type="button" class="danger-btn" id="clearAllDataButton">Clear all participants &amp; results</button>
+          </div>
           <p id="publishMessage" class="message" role="status"></p>
-          <p class="help-text"><strong>Important:</strong> DEMO participants are intended for local testing only. Remove them before publishing real participant lists, unless the demo records are being used intentionally for testing a private repository.</p>
+
         </section>
       </div>
     </section>

@@ -1,42 +1,42 @@
-# CSI Elanthoor District Youth Kalamela – Admin Tabs (v6)
+# CSI Elanthoor District Youth Kalamela — Mobile-First Edition (v8)
 
-This is an update to the **v5 fixed-event, gender-aware, award-rule** website. The current site's public design, event master list (34 entries), church IDs (`p01`–`p21`), special award calculations, and **schemaVersion 5 `data/results.json`** remain unchanged.
+Updated from **Clean Final-Testing Edition (v7)**. The data format, competition rules, church master list, Admin functionality, and storage key are unchanged. This release focuses on phone usability.
 
-## UI improvements
+## Phone-first design
 
-The local Admin workspace now has six tabs: **Churches, Events, Participants, Enter Winners, Recorded Results, Publish**. Keyboard left/right arrows also navigate these tabs. The Churches tab has searchable, redesigned pastorate family cards with main-church/outstation labels, points, and registration counts. The Events tab supports searching and stage/writing/group filtering.
+- **Persistent bottom navigation** on phones (Home / Scoreboard / Leaderboard / Admin), with generous touch targets and iPhone safe-area padding.
+- **Home**: responsive branding, hero, primary actions, church statistics, three information cards and Youth Movement heritage section.
+- **Scoreboard**: full-width church selector; compact church total; winning results and participant scores displayed as vertically stacked **mobile cards** with descriptive column labels.
+- **Leaderboard**: pastorate and outstation summaries, one-column winner podiums, mobile-friendly ranking cards, and Kala Thilakam / Kala Prathibha awards.
+- **Results Matrix**: deliberately remains a horizontally swipeable, scrollable grid, with sticky first column and headings. Swiping is necessary to browse 34 event columns.
+- **Admin**: all six tabs fit in a 2-column grid on phones; church directory, event list, registration forms, group-member picker, winner-entry forms, recorded-result editing and JSON publication controls resize for small screens.
+- **Tablet widths**: three-column Admin tabs and properly contained matrix viewport.
+- Long church/participant names wrap correctly. Inputs use 16px fonts on phones to avoid iOS Safari zooming during editing.
 
-## Corrected 1st / 2nd / 3rd winner pickers
+## Installation / publishing
 
-Each place's church selector refreshes only its **own** participant dropdown. The pickers include every registered person for that church; for gender-restricted events, ineligible choices remain visible but disabled so the dropdown does not seem mysteriously empty. Each place also displays the number of eligible registered participants. Group events still use multiple-member checkboxes.
+1. Extract this ZIP into your GitHub Pages project. Replace `index.html`, `style.css` and `script.js` with the new versions.
+2. **Important: KEEP your existing `data/results.json` if it already contains your real competition results.** The JSON supplied in this ZIP is the clean empty starter, not a copy of any real data.
+3. Test locally using VS Code **Live Server** at `http://localhost:5500/` (or your chosen local port).
+4. Local result editing uses **Admin → PIN `local-demo`**. This PIN only guards against accidental edits; it is not secure server-side authentication.
+5. Export JSON using **Admin → Publish → Download results.json**, replace the repository `data/results.json`, commit and push to GitHub Pages to update the public results.
+6. The public GitHub Pages site remains **read-only**. Actual result management is local, and the public site reads `data/results.json`.
 
-## Demo members for testing
+**Current local drafts are preserved**: the browser draft key remains `elanthoor_kalamela_editor_clean_v7`. Updating CSS/HTML/JS does not clear existing local entries. The provided empty `results.json` will clear published results if committed, so do not replace your real data unless that is intended.
 
-Open the site locally using VS Code **Live Server** at `http://localhost:5500` (or the configured port), then unlock **Admin** using the **local demo PIN `local-demo`**. Open **Participants**, and click **Load sample participants**. This adds **84 clearly named DEMO participants** (four per church across all 21 churches: two males and two females). Clicking it repeatedly does not duplicate the records. `Remove unused demo participants` deletes only demo members who are not referenced in saved event results. To delete demo members who have scored, first clear/edit those results.
+## Unchanged competition rules
 
-**Do not publish demo participants as actual results.** Demo data are only added after clicking the button. They remain in the local browser draft until exported; review before uploading `data/results.json` to GitHub.
+- 21 fixed churches (10 main pastorate churches + 11 outstations); 34 fixed events with stage/writing/group tags.
+- Full placing points are added once to the winning church.
+- Only individual-event points with at least three competitors count toward Kala Thilakam and Kala Prathibha.
+- Group points stay with the church. Group members receive **tie-break bonuses only**, 1st +5, 2nd +3, 3rd +1, when eligible individual points are equal.
+- Data schema: `schemaVersion: 5`.
 
-## Scoring rules unchanged
+## Verification performed
 
-- Full points for every placement go to its selected church once, whether individual or group.
-- Eligible individual award points require **at least 3 total competitors** in that event.
-- Group points are NOT distributed to members. If eligible individual points tie, group-place bonuses of +5 (1st), +3 (2nd), and +1 (3rd) break ties.
-- Kala Thilakam and Kala Prathibha are ranked separately by gender.
-- Leading Pastorates and Leading Outstations remain separate.
+- JavaScript syntax checked using Node.js.
+- Browser-rendered layouts checked at 320, 375, 390, 430, 768 and 1024 CSS pixels across Home, Scoreboard, Leaderboard and all six Admin tabs: no page-level horizontal overflow in the 60 audited views.
+- Local editing flow tested at 375px: register participants, choose separate churches for 1st/2nd places, save winners, check scoreboard and export `results.json`.
+- Tests use a simulated browser document because navigation to local URLs is restricted in this test environment. Check the final deployed GitHub Pages site on an actual Android/iPhone device before the event.
 
-## Publishing / migration
-
-1. Extract this ZIP. Preserve your **existing `data/results.json`** if it contains real data.
-2. Serve `index.html` with VS Code Live Server; open Admin and enter results.
-3. In **Publish**, click **Download results.json** and replace only `data/results.json` in your GitHub Pages repository.
-4. Commit and push; deployed public pages read the same JSON, but hide the local editing controls.
-
-The local draft key remains `elanthoor_kalamela_editor_draft_v5`, so an existing v5 draft in the same browser/site origin remains available. A GitHub Pages site does not provide real admin login. Local demo PIN is not security; GitHub repository permissions govern publication.
-
-## Quick test
-
-1. Click **Participants > Load sample participants**. Check the church selector and ensure four DEMO names are visible per church.
-2. Open **Enter Winners**, choose a non-gender-specific individual event (e.g. Pencil Drawing), then choose different churches for first, second and third place. All three participant dropdowns should show four matching names, independently.
-3. Choose a gender-specific competition. All names display, but options of the wrong gender are disabled with an explanation.
-4. Enter sample positions and verify **Recorded Results**, public **Scoreboard**, and **Leaderboard**.
-5. Export JSON, reload the page and re-import to check persistence. Remove test data before going live.
+The linked Youth Movement image still depends on the official external URL. A built-in CSI fallback is shown if that image cannot be loaded.

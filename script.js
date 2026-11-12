@@ -55,20 +55,20 @@ const PASTORATES = CHURCH_ENTRIES.map(([id, name]) => {
 });
 
 const MASTER_EVENTS = [
-  {"id": "e01", "name": "Solo Instrument — Junior (Boys) [Set A]", "category": "Music", "type": "individual", "awardGender": "Boy", "tag": "stage"},
-  {"id": "e02", "name": "Solo Instrument — Junior (Girls) [Set A]", "category": "Music", "type": "individual", "awardGender": "Girl", "tag": "stage"},
-  {"id": "e03", "name": "Solo Instrument — Senior (Boys) [Set A]", "category": "Music", "type": "individual", "awardGender": "Boy", "tag": "stage"},
-  {"id": "e04", "name": "Solo Instrument — Senior (Girls) [Set A]", "category": "Music", "type": "individual", "awardGender": "Girl", "tag": "stage"},
-  {"id": "e05", "name": "Solo Instrument — Junior (Boys) [Set B]", "category": "Music", "type": "individual", "awardGender": "Boy", "tag": "stage"},
-  {"id": "e06", "name": "Solo Instrument — Junior (Girls) [Set B]", "category": "Music", "type": "individual", "awardGender": "Girl", "tag": "stage"},
-  {"id": "e07", "name": "Solo Instrument — Senior (Boys) [Set B]", "category": "Music", "type": "individual", "awardGender": "Boy", "tag": "stage"},
-  {"id": "e08", "name": "Solo Instrument — Senior (Girls) [Set B]", "category": "Music", "type": "individual", "awardGender": "Girl", "tag": "stage"},
-  {"id": "e09", "name": "Elocution — Malayalam", "category": "Music", "type": "individual", "awardGender": null, "tag": "stage"},
-  {"id": "e10", "name": "Elocution — English", "category": "Music", "type": "individual", "awardGender": null, "tag": "stage"},
+  {"id": "e01", "name": "Solo Eastern - Junior (Boys) [Set A]", "category": "Music", "type": "individual", "awardGender": "Boy", "tag": "stage"},
+  {"id": "e02", "name": "Solo Eastern - Junior (Girls) [Set A", "category": "Music", "type": "individual", "awardGender": "Girl", "tag": "stage"},
+  {"id": "e03", "name": "Solo Eastern - Senior (Boys) [Set A]", "category": "Music", "type": "individual", "awardGender": "Boy", "tag": "stage"},
+  {"id": "e04", "name": "Solo Eastern - Senior (Girls) [Set A]", "category": "Music", "type": "individual", "awardGender": "Girl", "tag": "stage"},
+  {"id": "e05", "name": "Solo Western - Junior (Boys) [Set B]", "category": "Music", "type": "individual", "awardGender": "Boy", "tag": "stage"},
+  {"id": "e06", "name": "Solo Western - Junior (Girls) [Set B]", "category": "Music", "type": "individual", "awardGender": "Girl", "tag": "stage"},
+  {"id": "e07", "name": "Solo Western - Senior (Boys) [Set B]", "category": "Music", "type": "individual", "awardGender": "Boy", "tag": "stage"},
+  {"id": "e08", "name": "Solo Western - Senior (Girls) [Set B]", "category": "Music", "type": "individual", "awardGender": "Girl", "tag": "stage"},
+  {"id": "e09", "name": "Elocution - Malayalam", "category": "Music", "type": "individual", "awardGender": null, "tag": "stage"},
+  {"id": "e10", "name": "Elocution - English", "category": "Music", "type": "individual", "awardGender": null, "tag": "stage"},
   {"id": "e11", "name": "Classical Music", "category": "Music", "type": "individual", "awardGender": null, "tag": "stage"},
   {"id": "e12", "name": "Organ Recital", "category": "Music", "type": "individual", "awardGender": null, "tag": "stage"},
-  {"id": "e13", "name": "Light Music — Male", "category": "Music", "type": "individual", "awardGender": "Boy", "tag": "stage"},
-  {"id": "e14", "name": "Light Music — Female", "category": "Music", "type": "individual", "awardGender": "Girl", "tag": "stage"},
+  {"id": "e13", "name": "Light Music - Male", "category": "Music", "type": "individual", "awardGender": "Boy", "tag": "stage"},
+  {"id": "e14", "name": "Light Music - Female", "category": "Music", "type": "individual", "awardGender": "Girl", "tag": "stage"},
   {"id": "e15", "name": "Group Song", "category": "Music", "type": "group", "awardGender": null, "tag": "group"},
   {"id": "e16", "name": "Quartet", "category": "Music", "type": "group", "awardGender": null, "tag": "group"},
   {"id": "e17", "name": "Pencil Drawing", "category": "Fine Arts", "type": "individual", "awardGender": null, "tag": "writing"},
@@ -77,18 +77,18 @@ const MASTER_EVENTS = [
   {"id": "e20", "name": "Fancy Dress", "category": "Literary Competitions", "type": "individual", "awardGender": null, "tag": "stage"},
   {"id": "e21", "name": "Mono Act", "category": "Literary Competitions", "type": "individual", "awardGender": null, "tag": "stage"},
   {"id": "e22", "name": "Mimicry", "category": "Literary Competitions", "type": "individual", "awardGender": null, "tag": "stage"},
-  {"id": "e23", "name": "Tabla", "category": "Literary Competitions", "type": "individual", "awardGender": null, "tag": "stage"},
+  {"id": "e23", "name": "Tableau", "category": "Literary Competitions", "type": "individual", "awardGender": null, "tag": "stage"},
   {"id": "e24", "name": "Mime", "category": "Literary Competitions", "type": "group", "awardGender": null, "tag": "group"},
-  {"id": "e25", "name": "Poetry Recitation — English", "category": "Speech and Language Competitions", "type": "individual", "awardGender": null, "tag": "writing"},
-  {"id": "e26", "name": "Poetry Recitation — Malayalam", "category": "Speech and Language Competitions", "type": "individual", "awardGender": null, "tag": "writing"},
-  {"id": "e27", "name": "Storytelling — English", "category": "Speech and Language Competitions", "type": "individual", "awardGender": null, "tag": "writing"},
-  {"id": "e28", "name": "Storytelling — Malayalam", "category": "Speech and Language Competitions", "type": "individual", "awardGender": null, "tag": "writing"},
-  {"id": "e29", "name": "Impromptu Speech — Junior (Malayalam)", "category": "Speech and Language Competitions", "type": "individual", "awardGender": null, "tag": "writing"},
-  {"id": "e30", "name": "Impromptu Speech — Senior (English)", "category": "Speech and Language Competitions", "type": "individual", "awardGender": null, "tag": "writing"},
-  {"id": "e31", "name": "Speech — Junior (Malayalam)", "category": "Speech and Language Competitions", "type": "individual", "awardGender": null, "tag": "stage"},
-  {"id": "e32", "name": "Speech — Senior (Malayalam)", "category": "Speech and Language Competitions", "type": "individual", "awardGender": null, "tag": "stage"},
-  {"id": "e33", "name": "Speech — Junior (English)", "category": "Speech and Language Competitions", "type": "individual", "awardGender": null, "tag": "stage"},
-  {"id": "e34", "name": "Speech — Senior (English)", "category": "Speech and Language Competitions", "type": "individual", "awardGender": null, "tag": "stage"}
+  {"id": "e25", "name": "Poetry Recitation - English", "category": "Speech and Language Competitions", "type": "individual", "awardGender": null, "tag": "writing"},
+  {"id": "e26", "name": "Poetry Recitation - Malayalam", "category": "Speech and Language Competitions", "type": "individual", "awardGender": null, "tag": "writing"},
+  {"id": "e27", "name": "Story Writing - English", "category": "Speech and Language Competitions", "type": "individual", "awardGender": null, "tag": "writing"},
+  {"id": "e28", "name": "Story Writing - Malayalam", "category": "Speech and Language Competitions", "type": "individual", "awardGender": null, "tag": "writing"},
+  {"id": "e29", "name": "Essay - Junior (Malayalam)", "category": "Speech and Language Competitions", "type": "individual", "awardGender": null, "tag": "writing"},
+  {"id": "e30", "name": "Essay - Senior (English)", "category": "Speech and Language Competitions", "type": "individual", "awardGender": null, "tag": "writing"},
+  {"id": "e31", "name": "Elocution - Junior (Malayalam)", "category": "Speech and Language Competitions", "type": "individual", "awardGender": null, "tag": "stage"},
+  {"id": "e32", "name": "Elocution - Senior (Malayalam)", "category": "Speech and Language Competitions", "type": "individual", "awardGender": null, "tag": "stage"},
+  {"id": "e33", "name": "Elocution - Junior (English)", "category": "Speech and Language Competitions", "type": "individual", "awardGender": null, "tag": "stage"},
+  {"id": "e34", "name": "Elocution - Senior (English)", "category": "Speech and Language Competitions", "type": "individual", "awardGender": null, "tag": "stage"}
 ].map(event => ({
   ...event,
   // The editable master-data tag is authoritative: change only tag to change event kind.
@@ -98,10 +98,10 @@ const MASTER_EVENTS = [
 const EVENT_IDS = new Set(MASTER_EVENTS.map(event => event.id));
 const PASTORATE_IDS = new Set(PASTORATES.map(church => church.id));
 const JSON_URL = "data/results.json";
-const DRAFT_STORAGE_KEY = "elanthoor_kalamela_editor_draft_v5";
-const PREVIOUS_DRAFT_KEYS = ["elanthoor_kalamela_editor_draft_v4", "elanthoor_kalamela_editor_draft_v3"];
+const DRAFT_STORAGE_KEY = "elanthoor_kalamela_editor_clean_v7";
+const PREVIOUS_DRAFT_KEYS = ["elanthoor_kalamela_editor_draft_v5", "elanthoor_kalamela_editor_draft_v4", "elanthoor_kalamela_editor_draft_v3"];
 // This PIN is a local convenience only, NOT internet authentication.
-const LOCAL_DEMO_PIN = "local-demo";
+const LOCAL_EDITOR_PIN = "Action@2026";
 const IS_LOCAL_EDITOR = ["localhost", "127.0.0.1", "[::1]"]
   .includes(window.location.hostname) || window.location.protocol === "file:";
 
@@ -124,7 +124,7 @@ const eventById = id => MASTER_EVENTS.find(event => event.id === id);
 const personById = id => data.participants.find(person => person.id === id);
 const peopleForChurch = id => data.participants.filter(person => person.pastorateId === id)
   .sort((a, b) => a.name.localeCompare(b.name));
-function emptyData() { return { schemaVersion: 5, updatedAt: null, participants: [], eventCounts: {}, results: {} }; }
+function emptyData() { return { schemaVersion: 5, updatedAt: null, showIndividualAwards: true, participants: [], eventCounts: {}, results: {} }; }
 const isValidPoints = n => Number.isFinite(n) && n >= 0 &&
   Math.abs(Math.round(n * 100) - n * 100) < 1e-7;
 
@@ -211,6 +211,9 @@ function validateDocument(source) {
   }
   const checked = emptyData();
   checked.updatedAt = typeof source.updatedAt === "string" ? source.updatedAt : null;
+  // Older results files predate this option, so keep their awards visible.
+  checked.showIndividualAwards = typeof source.showIndividualAwards === "boolean" ?
+    source.showIndividualAwards : true;
   for (const [eventId, count] of Object.entries(source.eventCounts)) {
     if (!EVENT_IDS.has(eventId) || !Number.isInteger(count) || count < 1 || count > 100000) {
       throw new Error("Invalid event participation count for " + eventId);
@@ -330,6 +333,8 @@ function showPage(page) {
     button.classList.toggle("active", button.dataset.page === page);
   });
   if (page === "admin") updateAdminVisibility();
+  // Changing pages from the mobile bottom navigation must show the new page heading.
+  window.scrollTo(0, 0);
 }
 function updateAdminVisibility() {
   el("adminPublicNotice").classList.toggle("hidden", IS_LOCAL_EDITOR);
@@ -338,8 +343,8 @@ function updateAdminVisibility() {
 }
 function loginAdmin() {
   if (!IS_LOCAL_EDITOR) return;
-  if (el("adminPassword").value !== LOCAL_DEMO_PIN) {
-    message("loginMessage", "Incorrect local demo PIN.", true); return;
+  if (el("adminPassword").value !== LOCAL_EDITOR_PIN) {
+    message("loginMessage", "Incorrect local editor PIN.", true); return;
   }
   adminUnlocked = true;
   el("adminPassword").value = "";
@@ -532,53 +537,10 @@ function deleteParticipant(id) {
   message("memberMessage", "Participant deleted.");
   saveDraft();
 }
-const DEMO_NAMES = [
-  { name: "DEMO - Anu", gender: "Female" },
-  { name: "DEMO - Arun", gender: "Male" },
-  { name: "DEMO - Meera", gender: "Female" },
-  { name: "DEMO - Rahul", gender: "Male" }
-];
-function loadDemoParticipants() {
-  if (!requireEditor()) return;
-  let added = 0;
-  for (const church of PASTORATES) {
-    DEMO_NAMES.forEach((template, index) => {
-      const id = `demo-${church.id}-${index + 1}`;
-      if (data.participants.some(person => person.id === id)) return;
-      data.participants.push({
-        id, pastorateId: church.id,
-        name: `${template.name} [${church.id.toUpperCase()}]`,
-        gender: template.gender
-      });
-      added++;
-    });
-  }
-  if (added) saveDraft();
-  message("demoMessage", added
-    ? `Added ${added} DEMO participants across all 21 churches. They are local testing data until you export JSON.`
-    : "Sample participants already loaded; no duplicates added.");
-}
-function removeDemoParticipants() {
-  if (!requireEditor()) return;
-  const demoPeople = data.participants.filter(p => /^demo-p\d{2}-\d+$/.test(p.id));
-  if (!demoPeople.length) return message("demoMessage", "No sample participants found.");
-  const removable = demoPeople.filter(p => !participantIsInResults(p.id));
-  const retained = demoPeople.length - removable.length;
-  if (!removable.length) return message("demoMessage", `${retained} demo participants are referenced by event results. Clear those results first.`, true);
-  if (!confirm(`Remove ${removable.length} unused DEMO participants? ${retained} with results will remain.`)) return;
-  const ids = new Set(removable.map(p => p.id));
-  data.participants = data.participants.filter(p => !ids.has(p.id));
-  resetParticipantEditor();
-  saveDraft();
-  message("demoMessage", `Removed ${removable.length} DEMO participants. ${retained} remain in recorded results.`);
-}
-function updateDemoStats() {
-  const total = data.participants.filter(p => /^demo-p\d{2}-\d+$/.test(p.id)).length;
+function updateAdminCounts() {
   el("tabParticipantCount").textContent = data.participants.length;
-  el("tabResultsCount").textContent = Object.keys(data.results).filter(id => Object.keys(data.results[id]).length).length;
-  el("demoDataSummary").textContent = total
-    ? `${total} DEMO participants present. Remove them before publishing actual results.`
-    : "No DEMO participants in the current draft.";
+  el("tabResultsCount").textContent = Object.keys(data.results)
+    .filter(id => Object.keys(data.results[id]).length).length;
 }
 
 function renderParticipantList() {
@@ -845,7 +807,7 @@ function renderRecordedEvents() {
     const missing = competition.type === "group" && Object.values(data.results[competition.id] || {})
       .some(entry => !entry.participantIds.length);
     return `<tr><td>${escapeHTML(competition.name)}</td><td>${escapeHTML(competition.tag)}</td>
-    <td>${data.eventCounts[competition.id] ?? "—"}</td>
+    <td>${data.eventCounts[competition.id] ?? "-"}</td>
     <td>${positions} / 3${missing ? ' <span class="missing-members">· Assign group members for tie-breaks</span>' : ""}</td>
     <td class="action-cell"><button type="button" class="small-action edit-btn" data-result-action="edit" data-id="${competition.id}">Edit</button>
     <button type="button" class="small-action danger-btn" data-result-action="clear" data-id="${competition.id}">Clear</button></td></tr>`;
@@ -938,7 +900,7 @@ function matrixRows() {
       const positions = Object.entries(data.results[event.id] || {})
         .filter(([, w]) => w.pastorateId === church.id)
         .map(([place, w]) => `${ordinal(Number(place))}: ${pointLabel(w.points)}`);
-      return positions.length ? positions.join("; ") : "—";
+      return positions.length ? positions.join("; ") : "-";
     });
     return { pastorate: church.name, category: church.category,
       parentPastorate: church.parentPastorate, cells, total: getPastorateTotal(church.id) };
@@ -958,7 +920,7 @@ function leaderboardPositions(category) {
   let previous = null;
   let rank = 0;
   return ranked.map((p, index) => {
-    const position = p.points <= 0 ? "—" :
+    const position = p.points <= 0 ? "-" :
       (Math.abs(p.points - previous) < 1e-9 ? rank : index + 1);
     if (p.points > 0) { previous = p.points; rank = position; }
     return { ...p, rank: position };
@@ -978,6 +940,8 @@ function renderLeaderboard() {
     <td>${escapeHTML(c.name)}</td><td><strong>${pointLabel(c.points)}</strong></td></tr>`).join("");
   el("outstationLeaderboardRows").innerHTML = leaderboardPositions("outstation").map(c => `<tr><td>${c.rank}</td>
     <td>${escapeHTML(c.name)}</td><td>${escapeHTML(c.parentPastorate)}</td><td><strong>${pointLabel(c.points)}</strong></td></tr>`).join("");
+  el("individualAwardsSection").classList.toggle("hidden", !data.showIndividualAwards);
+  el("showIndividualAwards").checked = data.showIndividualAwards;
   renderAwards();
 }
 function renderAwards() {
@@ -1012,7 +976,7 @@ function renderPublicEnhancements() {
   renderCategoryPodium("outstation", "topOutstationPodium");
 }
 function renderAll() {
-  updateDemoStats();
+  updateAdminCounts();
   renderDropdowns();
   renderPastorates();
   renderEventManager();
@@ -1083,6 +1047,27 @@ async function resetDraft() {
     message("publishMessage", "Published JSON loaded.");
   } catch (error) { message("publishMessage", "Cannot load published data: " + error.message, true); }
 }
+function clearAllParticipantsAndResults() {
+  if (!requireEditor()) return;
+  const confirmation = prompt(
+    "Clear ALL registered participants, event winners and competitor/team counts from this local draft? This cannot be undone. Type CLEAR to confirm:"
+  );
+  if (confirmation !== "CLEAR") return;
+
+  data = { ...emptyData(), showIndividualAwards: data.showIndividualAwards };
+  // Prevent legacy drafts from being reloaded when using this clean edition.
+  PREVIOUS_DRAFT_KEYS.forEach(key => localStorage.removeItem(key));
+  editingParticipantId = null;
+  resetParticipantEditor();
+  el("resultEvent").value = "";
+  el("resultMessage").textContent = "";
+  el("memberMessage").textContent = "";
+  el("bulkMemberLines").value = "";
+  saveDraft();
+  message("publishMessage", "Clean local draft saved: 0 participants, 0 winners, and 0 event counts. Export results.json and commit it to GitHub to clear the public scores as well.");
+  setStatus("Clean local draft saved • Ready for real competition entry", "draft");
+}
+
 function attachHandlers() {
   document.querySelectorAll("[data-admin-tab]").forEach(button => {
     button.addEventListener("click", () => activateAdminTab(button.dataset.adminTab));
@@ -1100,8 +1085,6 @@ function attachHandlers() {
   el("eventSearch").addEventListener("input", renderEventManager);
   el("eventTagFilter").addEventListener("change", renderEventManager);
   el("recordedSearch").addEventListener("input", renderRecordedEvents);
-  el("addDemoParticipants").addEventListener("click", loadDemoParticipants);
-  el("removeDemoParticipants").addEventListener("click", removeDemoParticipants);
   el("podiumRows").addEventListener("change", event => {
     const churchPicker = event.target.closest("select[data-winner-church]");
     if (churchPicker) {
@@ -1127,6 +1110,14 @@ function attachHandlers() {
     if (button.dataset.memberAction === "delete") deleteParticipant(button.dataset.id);
   });
   el("resultEvent").addEventListener("change", () => { showEventForm(); message("resultMessage", ""); });
+  el("showIndividualAwards").addEventListener("change", event => {
+    if (!requireEditor()) {
+      event.target.checked = data.showIndividualAwards;
+      return;
+    }
+    data.showIndividualAwards = event.target.checked;
+    saveDraft();
+  });
   el("resultForm").addEventListener("submit", saveResultsForEvent);
   el("clearEventResults").addEventListener("click", () => clearResultsForEvent());
   el("exportJsonButton").addEventListener("click", exportJson);
@@ -1135,6 +1126,7 @@ function attachHandlers() {
     event.target.value = "";
   });
   el("resetDraftButton").addEventListener("click", resetDraft);
+  el("clearAllDataButton").addEventListener("click", clearAllParticipantsAndResults);
   el("recordedEventRows").addEventListener("click", event => {
     const button = event.target.closest("button[data-result-action]");
     if (!button) return;
@@ -1148,7 +1140,40 @@ function attachHandlers() {
     }
   });
 }
+
+// Give each mobile results card labels matching the column headings.
+// The data table remains semantic HTML; only its narrow-screen presentation changes.
+function annotateMobileTables() {
+  document.querySelectorAll("table.mobile-card-table").forEach(table => {
+    const labels = Array.from(table.querySelectorAll("thead th"), th => th.textContent.trim());
+    table.querySelectorAll("tbody tr").forEach(row => {
+      Array.from(row.cells).forEach((cell, index) => {
+        if (cell.colSpan > 1) {
+          cell.removeAttribute("data-label");
+        } else {
+          cell.setAttribute("data-label", labels[index] || "Details");
+        }
+      });
+    });
+  });
+}
+function initialiseResponsiveTables() {
+  const main = document.querySelector("main");
+  if (!main) return;
+  let pending = false;
+  new MutationObserver(() => {
+    if (pending) return;
+    pending = true;
+    requestAnimationFrame(() => {
+      pending = false;
+      annotateMobileTables();
+    });
+  }).observe(main, { childList: true, subtree: true });
+  annotateMobileTables();
+}
+
 async function initialise() {
+  initialiseResponsiveTables();
   attachHandlers();
   activateAdminTab("churches");
   updateAdminVisibility();
@@ -1166,14 +1191,11 @@ async function initialise() {
   if (IS_LOCAL_EDITOR) {
     try {
       const draftText = localStorage.getItem(DRAFT_STORAGE_KEY);
-      const oldDraft = !draftText ? PREVIOUS_DRAFT_KEYS.map(key => localStorage.getItem(key)).find(Boolean) : null;
-      if (draftText || oldDraft) {
-        data = validateDocument(JSON.parse(draftText || oldDraft));
-        setStatus(oldDraft
-          ? "Previous draft migrated • Enter event competitor counts, review genders and group members, then export schema v5 JSON"
-          : "Local results draft loaded • Not yet published", "draft");
+      if (draftText) {
+        data = validateDocument(JSON.parse(draftText));
+        setStatus("Local results draft loaded • Not yet published", "draft");
       } else if (publishedLoaded) {
-        setStatus("Published results loaded • Local editor available");
+        setStatus("Published results loaded");
       } else {
         setStatus("Could not load data/results.json. Open using VS Code Live Server. " + loadError?.message, "error");
       }
