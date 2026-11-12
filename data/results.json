@@ -1,6 +1,6 @@
 {
   "schemaVersion": 5,
-  "updatedAt": "2026-11-12T18:11:44.226Z",
+  "updatedAt": "2026-11-12T18:18:33.098Z",
   "showIndividualAwards": false,
   "participants": [
     {
@@ -44,7 +44,8 @@
     "e09": 10,
     "e12": 5,
     "e25": 2,
-    "e16": 4
+    "e16": 4,
+    "e01": 3
   },
   "results": {
     "e09": {
@@ -117,6 +118,13 @@
           "member-188a45f6-4804-4fbf-a0bc-79b42cdccd25"
         ],
         "points": 3
+      }
+    },
+    "e01": {
+      "1": {
+        "pastorateId": "p03",
+        "participantId": "member-188a45f6-4804-4fbf-a0bc-79b42cdccd25",
+        "points": 10
       }
     }
   }
