@@ -77,7 +77,7 @@ const MASTER_EVENTS = [
   {"id": "e20", "name": "Fancy Dress", "category": "Literary Competitions", "type": "individual", "awardGender": null, "tag": "stage"},
   {"id": "e21", "name": "Mono Act", "category": "Literary Competitions", "type": "individual", "awardGender": null, "tag": "stage"},
   {"id": "e22", "name": "Mimicry", "category": "Literary Competitions", "type": "individual", "awardGender": null, "tag": "stage"},
-  {"id": "e23", "name": "Tableau", "category": "Literary Competitions", "type": "individual", "awardGender": null, "tag": "stage"},
+  {"id": "e23", "name": "Tableau", "category": "Literary Competitions", "type": "group", "awardGender": null, "tag": "stage"},
   {"id": "e24", "name": "Mime", "category": "Literary Competitions", "type": "group", "awardGender": null, "tag": "group"},
   {"id": "e25", "name": "Poetry Recitation - English", "category": "Speech and Language Competitions", "type": "individual", "awardGender": null, "tag": "writing"},
   {"id": "e26", "name": "Poetry Recitation - Malayalam", "category": "Speech and Language Competitions", "type": "individual", "awardGender": null, "tag": "writing"},
