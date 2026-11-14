@@ -1,6 +1,6 @@
 {
   "schemaVersion": 5,
-  "updatedAt": "2026-11-14T03:13:45.348Z",
+  "updatedAt": "2026-11-14T06:38:10.834Z",
   "showIndividualAwards": false,
   "participants": [
     {
@@ -134,6 +134,36 @@
       "pastorateId": "p05",
       "name": "JOANITA ELSA OOMMEN",
       "gender": "Female"
+    },
+    {
+      "id": "member-e84965fb-eeb9-4077-95a6-215b53affb6a",
+      "pastorateId": "p08",
+      "name": "AADHIN PAPPACHAN",
+      "gender": "Male"
+    },
+    {
+      "id": "member-36dda9a6-5121-4d21-83c0-6db16e03fb9b",
+      "pastorateId": "p05",
+      "name": "AARON GEORGE THARIAN",
+      "gender": "Male"
+    },
+    {
+      "id": "member-e6db577b-642b-47f7-a145-b43b36c8dfad",
+      "pastorateId": "p08",
+      "name": "SNEHAMOL BABU",
+      "gender": "Female"
+    },
+    {
+      "id": "member-d6301c2d-0852-4ba8-984b-8e6998a29150",
+      "pastorateId": "p12",
+      "name": "MERLIN K METHEW",
+      "gender": "Female"
+    },
+    {
+      "id": "member-187241e4-4ddd-4342-8317-91119eea1559",
+      "pastorateId": "p05",
+      "name": "ALWIN JOMON GEORGE",
+      "gender": "Male"
     }
   ],
   "eventCounts": {
@@ -145,7 +175,11 @@
     "e26": 11,
     "e25": 4,
     "e28": 16,
-    "e27": 5
+    "e27": 5,
+    "e13": 6,
+    "e31": 8,
+    "e14": 9,
+    "e33": 3
   },
   "results": {
     "e17": {
@@ -299,6 +333,69 @@
         "pastorateId": "p05",
         "participantId": "member-2a6ea2e6-3d5e-4cf1-b732-e8b0246c3327",
         "points": 4
+      }
+    },
+    "e13": {
+      "1": {
+        "pastorateId": "p11",
+        "participantId": "member-e4adff91-e917-4f4c-b1d7-1765620c7044",
+        "points": 8
+      },
+      "2": {
+        "pastorateId": "p08",
+        "participantId": "member-988c981a-528c-40d7-96d4-5c8fc98327f7",
+        "points": 6
+      },
+      "3": {
+        "pastorateId": "p08",
+        "participantId": "member-e84965fb-eeb9-4077-95a6-215b53affb6a",
+        "points": 4
+      }
+    },
+    "e31": {
+      "1": {
+        "pastorateId": "p11",
+        "participantId": "member-40189984-5808-44a4-af5e-8e38072123ec",
+        "points": 10
+      },
+      "2": {
+        "pastorateId": "p05",
+        "participantId": "member-36dda9a6-5121-4d21-83c0-6db16e03fb9b",
+        "points": 8
+      },
+      "3": {
+        "pastorateId": "p02",
+        "participantId": "member-a91c90f2-5c8e-44ed-9c41-e1756c3bdb95",
+        "points": 4
+      }
+    },
+    "e14": {
+      "1": {
+        "pastorateId": "p08",
+        "participantId": "member-e6db577b-642b-47f7-a145-b43b36c8dfad",
+        "points": 10
+      },
+      "2": {
+        "pastorateId": "p05",
+        "participantId": "member-c2ff2764-a2fd-4d27-ae98-da892b0f0edd",
+        "points": 8
+      },
+      "3": {
+        "pastorateId": "p12",
+        "participantId": "member-d6301c2d-0852-4ba8-984b-8e6998a29150",
+        "points": 4
+      }
+    },
+    "e33": {
+      "1": {
+        "pastorateId": "p11",
+        "participantId": "member-40189984-5808-44a4-af5e-8e38072123ec",
+        "points": 10
+      },
+      "2": {
+        "pastorateId": "p05",
+        "participantId": "member-187241e4-4ddd-4342-8317-91119eea1559",
+        "points": 6
       }
     }
   }
