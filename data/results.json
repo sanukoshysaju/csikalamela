@@ -1,6 +1,6 @@
 {
   "schemaVersion": 5,
-  "updatedAt": "2026-11-14T10:14:07.554Z",
+  "updatedAt": "2026-11-14T10:53:57.634Z",
   "showIndividualAwards": false,
   "participants": [
     {
@@ -236,6 +236,24 @@
       "pastorateId": "p04",
       "name": "RIYA ANN TIJU",
       "gender": "Female"
+    },
+    {
+      "id": "member-c3328cfc-0edd-4c27-abf7-28cf09f849b8",
+      "pastorateId": "p19",
+      "name": "INDIAMOL P V",
+      "gender": "Female"
+    },
+    {
+      "id": "member-aa3ce9df-fa36-4c80-8e90-55094b784ef4",
+      "pastorateId": "p12",
+      "name": "SAJO P JOSE",
+      "gender": "Male"
+    },
+    {
+      "id": "member-c7519613-0c59-47d0-98c2-47f626f25909",
+      "pastorateId": "p19",
+      "name": "JOEL T JOSE",
+      "gender": "Male"
     }
   ],
   "eventCounts": {
@@ -262,7 +280,10 @@
     "e07": 5,
     "e08": 7,
     "e34": 5,
-    "e12": 4
+    "e12": 4,
+    "e35": 2,
+    "e36": 5,
+    "e20": 10
   },
   "results": {
     "e17": {
@@ -666,6 +687,52 @@
         "pastorateId": "p05",
         "participantId": "member-a60b313c-767f-465f-9068-e0f243acaee3",
         "points": 6
+      }
+    },
+    "e35": {
+      "1": {
+        "pastorateId": "p05",
+        "participantId": "member-a60b313c-767f-465f-9068-e0f243acaee3",
+        "points": 8
+      },
+      "2": {
+        "pastorateId": "p19",
+        "participantId": "member-c3328cfc-0edd-4c27-abf7-28cf09f849b8",
+        "points": 4
+      }
+    },
+    "e36": {
+      "1": {
+        "pastorateId": "p12",
+        "participantId": "member-aa3ce9df-fa36-4c80-8e90-55094b784ef4",
+        "points": 10
+      },
+      "2": {
+        "pastorateId": "p19",
+        "participantId": "member-c7519613-0c59-47d0-98c2-47f626f25909",
+        "points": 8
+      },
+      "3": {
+        "pastorateId": "p08",
+        "participantId": "member-988c981a-528c-40d7-96d4-5c8fc98327f7",
+        "points": 6
+      }
+    },
+    "e20": {
+      "1": {
+        "pastorateId": "p12",
+        "participantId": "member-d6301c2d-0852-4ba8-984b-8e6998a29150",
+        "points": 10
+      },
+      "2": {
+        "pastorateId": "p05",
+        "participantId": "member-0ff016bb-3579-4544-a49f-202f04f3b385",
+        "points": 8
+      },
+      "3": {
+        "pastorateId": "p11",
+        "participantId": "member-4f37365d-0a92-40fd-8103-354392cd6af0",
+        "points": 4
       }
     }
   }
