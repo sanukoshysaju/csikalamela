@@ -90,6 +90,7 @@ const MASTER_EVENTS = [
   {"id": "e33", "name": "Elocution - Junior (English)", "category": "Speech and Language Competitions", "type": "individual", "awardGender": null, "tag": "stage"},
   {"id": "e34", "name": "Elocution - Senior (English)", "category": "Speech and Language Competitions", "type": "individual", "awardGender": null, "tag": "stage"},
   {"id": "e35", "name": "Violin", "category": "Music", "type": "individual", "awardGender": null, "tag": "stage"},
+  {"id": "e36", "name": "Percussion", "category": "Music", "type": "individual", "awardGender": null, "tag": "stage"},
 
 ].map(event => ({
   ...event,
