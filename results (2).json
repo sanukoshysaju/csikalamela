@@ -1,0 +1,305 @@
+{
+  "schemaVersion": 5,
+  "updatedAt": "2026-11-14T03:13:45.348Z",
+  "showIndividualAwards": false,
+  "participants": [
+    {
+      "id": "member-8532532b-a744-4140-898b-e31b1d156081",
+      "pastorateId": "p12",
+      "name": "SELIN SAJO",
+      "gender": "Female"
+    },
+    {
+      "id": "member-76a0649d-c4ea-4200-88b2-052b668553ce",
+      "pastorateId": "p04",
+      "name": "RINO RATHEESH",
+      "gender": "Male"
+    },
+    {
+      "id": "member-1f80e8d9-98a9-479b-9511-df7f664bbd35",
+      "pastorateId": "p19",
+      "name": "SYAMA SAMUEL",
+      "gender": "Female"
+    },
+    {
+      "id": "member-2712ec88-4c34-48b3-b8af-5ee1a2e5c302",
+      "pastorateId": "p05",
+      "name": "JEROM JOHN KURIAN",
+      "gender": "Male"
+    },
+    {
+      "id": "member-0ff016bb-3579-4544-a49f-202f04f3b385",
+      "pastorateId": "p05",
+      "name": "JERIN MARY EBEY",
+      "gender": "Female"
+    },
+    {
+      "id": "member-43009d75-ebdc-4c71-9a12-76250c34cd4d",
+      "pastorateId": "p08",
+      "name": "SUBIN THAMPY MATHEW",
+      "gender": "Male"
+    },
+    {
+      "id": "member-a15cecf4-ffe6-498c-8f01-d4d7ab793c7c",
+      "pastorateId": "p04",
+      "name": "RICKSON T MARKOSE",
+      "gender": "Male"
+    },
+    {
+      "id": "member-9cf43367-af3b-4b3d-b30c-a080c7570a52",
+      "pastorateId": "p05",
+      "name": "BILU MIRIAM BABY",
+      "gender": "Female"
+    },
+    {
+      "id": "member-e4adff91-e917-4f4c-b1d7-1765620c7044",
+      "pastorateId": "p11",
+      "name": "JEBIN JAMES MATHEW",
+      "gender": "Male"
+    },
+    {
+      "id": "member-a91c90f2-5c8e-44ed-9c41-e1756c3bdb95",
+      "pastorateId": "p02",
+      "name": "ALPHAMOL M K",
+      "gender": "Female"
+    },
+    {
+      "id": "member-a1a7acd5-8111-48d5-b632-7b0c6d42ac1f",
+      "pastorateId": "p19",
+      "name": "ADHEEN K JOSE",
+      "gender": "Male"
+    },
+    {
+      "id": "member-9f192b0c-0fcb-43f3-bb43-ebe2b5dd50f6",
+      "pastorateId": "p04",
+      "name": "AKSA BABU",
+      "gender": "Female"
+    },
+    {
+      "id": "member-125775f3-c6a6-45e4-844b-818fcc13bf47",
+      "pastorateId": "p19",
+      "name": "SUDHEENA ISSAC",
+      "gender": "Female"
+    },
+    {
+      "id": "member-2c5fcc76-378a-4b84-b87e-f1ec93acd3b7",
+      "pastorateId": "p04",
+      "name": "ANGHA ABEY",
+      "gender": "Female"
+    },
+    {
+      "id": "member-dcd19228-029a-4bdb-aa2c-9d53f1e7c157",
+      "pastorateId": "p05",
+      "name": "JOANNA MIRIAM OOMMEN",
+      "gender": "Female"
+    },
+    {
+      "id": "member-a60b313c-767f-465f-9068-e0f243acaee3",
+      "pastorateId": "p05",
+      "name": "ATUL K THOMAS",
+      "gender": "Male"
+    },
+    {
+      "id": "member-67c63019-0f15-41a7-a0ed-74f00069e5f9",
+      "pastorateId": "p11",
+      "name": "ARUSH ROJI OMMEN",
+      "gender": "Male"
+    },
+    {
+      "id": "member-988c981a-528c-40d7-96d4-5c8fc98327f7",
+      "pastorateId": "p08",
+      "name": "GILL JOHN BIJU",
+      "gender": "Male"
+    },
+    {
+      "id": "member-961799a6-a33d-45b4-9a5f-880f07d3a89b",
+      "pastorateId": "p08",
+      "name": "AINA ACCAMMA BEJO",
+      "gender": "Female"
+    },
+    {
+      "id": "member-c2ff2764-a2fd-4d27-ae98-da892b0f0edd",
+      "pastorateId": "p05",
+      "name": "AILEEN GRACE THOMAS",
+      "gender": "Female"
+    },
+    {
+      "id": "member-40189984-5808-44a4-af5e-8e38072123ec",
+      "pastorateId": "p11",
+      "name": "JESNA JOHNSON",
+      "gender": "Female"
+    },
+    {
+      "id": "member-2a6ea2e6-3d5e-4cf1-b732-e8b0246c3327",
+      "pastorateId": "p05",
+      "name": "JOANITA ELSA OOMMEN",
+      "gender": "Female"
+    }
+  ],
+  "eventCounts": {
+    "e17": 11,
+    "e18": 7,
+    "e19": 8,
+    "e30": 7,
+    "e29": 11,
+    "e26": 11,
+    "e25": 4,
+    "e28": 16,
+    "e27": 5
+  },
+  "results": {
+    "e17": {
+      "1": {
+        "pastorateId": "p12",
+        "participantId": "member-8532532b-a744-4140-898b-e31b1d156081",
+        "points": 10
+      },
+      "2": {
+        "pastorateId": "p19",
+        "participantId": "member-1f80e8d9-98a9-479b-9511-df7f664bbd35",
+        "points": 8
+      },
+      "3": {
+        "pastorateId": "p04",
+        "participantId": "member-76a0649d-c4ea-4200-88b2-052b668553ce",
+        "points": 4
+      }
+    },
+    "e18": {
+      "1": {
+        "pastorateId": "p12",
+        "participantId": "member-8532532b-a744-4140-898b-e31b1d156081",
+        "points": 10
+      },
+      "2": {
+        "pastorateId": "p05",
+        "participantId": "member-2712ec88-4c34-48b3-b8af-5ee1a2e5c302",
+        "points": 8
+      },
+      "3": {
+        "pastorateId": "p05",
+        "participantId": "member-0ff016bb-3579-4544-a49f-202f04f3b385",
+        "points": 4
+      }
+    },
+    "e19": {
+      "1": {
+        "pastorateId": "p05",
+        "participantId": "member-2712ec88-4c34-48b3-b8af-5ee1a2e5c302",
+        "points": 10
+      },
+      "2": {
+        "pastorateId": "p08",
+        "participantId": "member-43009d75-ebdc-4c71-9a12-76250c34cd4d",
+        "points": 8
+      },
+      "3": {
+        "pastorateId": "p04",
+        "participantId": "member-a15cecf4-ffe6-498c-8f01-d4d7ab793c7c",
+        "points": 4
+      }
+    },
+    "e30": {
+      "1": {
+        "pastorateId": "p05",
+        "participantId": "member-9cf43367-af3b-4b3d-b30c-a080c7570a52",
+        "points": 10
+      },
+      "2": {
+        "pastorateId": "p11",
+        "participantId": "member-e4adff91-e917-4f4c-b1d7-1765620c7044",
+        "points": 8
+      },
+      "3": {
+        "pastorateId": "p05",
+        "participantId": "member-0ff016bb-3579-4544-a49f-202f04f3b385",
+        "points": 4
+      }
+    },
+    "e29": {
+      "1": {
+        "pastorateId": "p02",
+        "participantId": "member-a91c90f2-5c8e-44ed-9c41-e1756c3bdb95",
+        "points": 10
+      },
+      "2": {
+        "pastorateId": "p19",
+        "participantId": "member-a1a7acd5-8111-48d5-b632-7b0c6d42ac1f",
+        "points": 8
+      },
+      "3": {
+        "pastorateId": "p04",
+        "participantId": "member-9f192b0c-0fcb-43f3-bb43-ebe2b5dd50f6",
+        "points": 4
+      }
+    },
+    "e26": {
+      "1": {
+        "pastorateId": "p19",
+        "participantId": "member-125775f3-c6a6-45e4-844b-818fcc13bf47",
+        "points": 10
+      },
+      "2": {
+        "pastorateId": "p04",
+        "participantId": "member-2c5fcc76-378a-4b84-b87e-f1ec93acd3b7",
+        "points": 8
+      },
+      "3": {
+        "pastorateId": "p12",
+        "participantId": "member-8532532b-a744-4140-898b-e31b1d156081",
+        "points": 4
+      }
+    },
+    "e25": {
+      "1": {
+        "pastorateId": "p05",
+        "participantId": "member-dcd19228-029a-4bdb-aa2c-9d53f1e7c157",
+        "points": 10
+      },
+      "2": {
+        "pastorateId": "p05",
+        "participantId": "member-a60b313c-767f-465f-9068-e0f243acaee3",
+        "points": 8
+      },
+      "3": {
+        "pastorateId": "p11",
+        "participantId": "member-67c63019-0f15-41a7-a0ed-74f00069e5f9",
+        "points": 4
+      }
+    },
+    "e28": {
+      "1": {
+        "pastorateId": "p19",
+        "participantId": "member-1f80e8d9-98a9-479b-9511-df7f664bbd35",
+        "points": 10
+      },
+      "2": {
+        "pastorateId": "p08",
+        "participantId": "member-988c981a-528c-40d7-96d4-5c8fc98327f7",
+        "points": 8
+      },
+      "3": {
+        "pastorateId": "p08",
+        "participantId": "member-961799a6-a33d-45b4-9a5f-880f07d3a89b",
+        "points": 4
+      }
+    },
+    "e27": {
+      "1": {
+        "pastorateId": "p05",
+        "participantId": "member-c2ff2764-a2fd-4d27-ae98-da892b0f0edd",
+        "points": 10
+      },
+      "2": {
+        "pastorateId": "p11",
+        "participantId": "member-40189984-5808-44a4-af5e-8e38072123ec",
+        "points": 8
+      },
+      "3": {
+        "pastorateId": "p05",
+        "participantId": "member-2a6ea2e6-3d5e-4cf1-b732-e8b0246c3327",
+        "points": 4
+      }
+    }
+  }
+}
