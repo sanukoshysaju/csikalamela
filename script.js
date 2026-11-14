@@ -88,7 +88,9 @@ const MASTER_EVENTS = [
   {"id": "e31", "name": "Elocution - Junior (Malayalam)", "category": "Speech and Language Competitions", "type": "individual", "awardGender": null, "tag": "stage"},
   {"id": "e32", "name": "Elocution - Senior (Malayalam)", "category": "Speech and Language Competitions", "type": "individual", "awardGender": null, "tag": "stage"},
   {"id": "e33", "name": "Elocution - Junior (English)", "category": "Speech and Language Competitions", "type": "individual", "awardGender": null, "tag": "stage"},
-  {"id": "e34", "name": "Elocution - Senior (English)", "category": "Speech and Language Competitions", "type": "individual", "awardGender": null, "tag": "stage"}
+  {"id": "e34", "name": "Elocution - Senior (English)", "category": "Speech and Language Competitions", "type": "individual", "awardGender": null, "tag": "stage"},
+  {"id": "e35", "name": "Violin", "category": "Music", "type": "individual", "awardGender": null, "tag": "stage"},
+
 ].map(event => ({
   ...event,
   // The editable master-data tag is authoritative: change only tag to change event kind.
